@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useRef, useState } from "react";
+import { useExpenses } from "./ExpensesContext";
 
 function ExpensesRegister() {
 
@@ -16,8 +17,8 @@ function ExpensesRegister() {
         { id: 8, currency: "soles", "amount": 20.02 }
     ]
 
-    const [expenses, setExpenses] = useState([]);
     const [numberId, setNumberId] = useState(9);
+    const {expenses, setExpenses} = useExpenses();
 
     const refAmount = useRef();
     const refCurrency = useRef();
@@ -43,8 +44,8 @@ function ExpensesRegister() {
         setNumberId(numberId + 1);
         const expenseData = {
             id: numberId,
-            amount: refAmount.current.value,
-            currency: refCurrency.current.value
+            currency: refCurrency.current.value,
+            amount: parseFloat(refAmount.current.value),
         }
         setExpenses([...expenses, expenseData]);
         refAmount.current.value = "";
@@ -54,7 +55,6 @@ function ExpensesRegister() {
         console.log(id);
         setExpenses(expenses.filter(expense => expense.id !== id));
     }
-
 
     return (
         <div id="expense-register">
