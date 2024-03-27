@@ -1,9 +1,14 @@
+import BudgetStatistics from "./components/BudgetStatistics"
+import { ExpensesContextProvider } from "./components/ExpensesContext"
 import ExpensesRegister from "./components/ExpensesRegister"
 
 function App() {
   return (
     <>
-      <ExpensesRegister />
+      <ExpensesContextProvider>
+        <ExpensesRegister />
+        <BudgetStatistics />
+      </ ExpensesContextProvider>
     </>
   )
 }
