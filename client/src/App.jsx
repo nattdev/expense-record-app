@@ -1,7 +1,9 @@
-function App() {
+import ExpensesRegister from "./components/ExpensesRegister"
 
+function App() {
   return (
     <>
+      <ExpensesRegister />
     </>
   )
 }
