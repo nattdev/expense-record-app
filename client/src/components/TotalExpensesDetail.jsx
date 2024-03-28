@@ -19,7 +19,6 @@ function TotalExpensesDetail() {
     ];
 
     useEffect(() => {
-        console.log("cambio");
     }, [expenses]);
 
     const categoriesDetail = (
