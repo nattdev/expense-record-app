@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useRef, useState } from "react";
 import { useExpenses } from "./ExpensesContext";
+import { Badge } from "flowbite-react";
 
 function ExpensesRegister() {
 
@@ -69,19 +70,31 @@ function ExpensesRegister() {
         </div>
     );
 
-    const expensesList = expenses.map((expense) => <li key={expense.id}><div onClick={() => handleExpenseDetail(expense.id)}><span>{expense.currency == "soles" ? "S/." : "$"}</span>{expense.amount}<p>{expense.category == "sin categoria" ? "" : expense.category}</p></div><button onClick={() => handleDeleteExpense(expense.id)}>X</button></li>);
+    const expensesList = expenses.map(
+        (expense) => <li key={expense.id} className="flex">
+            <div onClick={() => handleExpenseDetail(expense.id)} className="flex justify-around">
+                <span>- {expense.currency == "soles" ? "S/." : "$"}</span>{expense.amount}
+                <Badge color={expense.category == "alimentacion" ? "warning" : expense.category == "pasajes" ? "success" : expense.category == "compras" ? "indigo" : "dark"} className="mx-3 text-xs">
+                    {expense.category == "sin categoria" ? "sin categoría" : expense.category}
+                </Badge>
+            </div>
+            <button onClick={() => handleDeleteExpense(expense.id)} className="ml-auto">❌</button>
+        </li>
+    );
 
     function handleSubmitExpense(event) {
         event.preventDefault();
-        setNumberId(numberId + 1);
-        const expenseData = {
-            id: numberId,
-            currency: refCurrency.current.value,
-            category: "sin categoria",
-            amount: parseFloat(refAmount.current.value),
+        if (refAmount.current.value > 0) {
+            setNumberId(numberId + 1);
+            const expenseData = {
+                id: numberId,
+                currency: refCurrency.current.value,
+                category: "sin categoria",
+                amount: parseFloat(refAmount.current.value),
+            }
+            setExpenses([...expenses, expenseData]);
+            refAmount.current.value = "";
         }
-        setExpenses([...expenses, expenseData]);
-        refAmount.current.value = "";
     }
 
     function handleDeleteExpense(id) {
@@ -112,16 +125,17 @@ function ExpensesRegister() {
     }
 
     return (
-        <div id="expense-register">
-            <form action="" onSubmit={handleSubmitExpense}>
-                <input ref={refAmount} id="expense" name="expense" step="0.0001" type="number" required/>
-                <select ref={refCurrency} name="currency" defaultValue="soles">
+        <div id="expense-register" className="row-span-3 bg-[#04394E] text-slate-200 p-6 rounded-3xl">
+            <form action="" onSubmit={handleSubmitExpense} className="flex gap-1">
+                <input ref={refAmount} id="expense" name="expense" step="0.0001" type="number" required className="w-9/12 text-slate-600 border-none [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none" />
+
+                <select ref={refCurrency} name="currency" defaultValue="soles" className="text-slate-600 border-none">
                     <option value="soles">S/.</option>
                     <option value="dolares">$</option>
                 </select>
-                <input type="submit"></input>
+                <input type="submit" className="bg-slate-50 p-2 m-0 outline-none border-none" value={"✔️"}></input>
             </form>
-            <ul id="expense-list">
+            <ul id="expense-list" className="mt-3">
                 {expensesList}
             </ul>
             {isDetailShown ? expenseDetail : ""}
