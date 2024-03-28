@@ -10,11 +10,11 @@ function ExpensesRegister() {
         { id: 1, currency: "soles", category: "alimentacion", "amount": 200 },
         { id: 2, currency: "soles", category: "compras", "amount": 20.02 },
         { id: 3, currency: "soles", category: "pasajes", "amount": 4.01 },
-        { id: 4, currency: "soles", category: "", "amount": 5.20 },
-        { id: 5, currency: "soles", category: "", "amount": 1002.20 },
-        { id: 6, currency: "soles", category: "", "amount": 10 },
-        { id: 7, currency: "soles", category: "", "amount": 200 },
-        { id: 8, currency: "soles", category: "", "amount": 20.02 }
+        { id: 4, currency: "soles", category: "sin categoria", "amount": 5.20 },
+        { id: 5, currency: "soles", category: "sin categoria", "amount": 1002.20 },
+        { id: 6, currency: "soles", category: "sin categoria", "amount": 10 },
+        { id: 7, currency: "soles", category: "sin categoria", "amount": 200 },
+        { id: 8, currency: "soles", category: "sin categoria", "amount": 20.02 }
     ]
 
     const [numberId, setNumberId] = useState(9);
@@ -69,7 +69,7 @@ function ExpensesRegister() {
         </div>
     );
 
-    const expensesList = expenses.map((expense) => <li key={expense.id}><div onClick={() => handleExpenseDetail(expense.id)}><span>{expense.currency == "soles" ? "S/." : "$"}</span>{expense.amount}<p>{expense.category}</p></div><button onClick={() => handleDeleteExpense(expense.id)}>X</button></li>);
+    const expensesList = expenses.map((expense) => <li key={expense.id}><div onClick={() => handleExpenseDetail(expense.id)}><span>{expense.currency == "soles" ? "S/." : "$"}</span>{expense.amount}<p>{expense.category == "sin categoria" ? "" : expense.category}</p></div><button onClick={() => handleDeleteExpense(expense.id)}>X</button></li>);
 
     function handleSubmitExpense(event) {
         event.preventDefault();
@@ -77,6 +77,7 @@ function ExpensesRegister() {
         const expenseData = {
             id: numberId,
             currency: refCurrency.current.value,
+            category: "sin categoria",
             amount: parseFloat(refAmount.current.value),
         }
         setExpenses([...expenses, expenseData]);
@@ -113,7 +114,7 @@ function ExpensesRegister() {
     return (
         <div id="expense-register">
             <form action="" onSubmit={handleSubmitExpense}>
-                <input ref={refAmount} id="expense" name="expense" step="0.0001" type="number" />
+                <input ref={refAmount} id="expense" name="expense" step="0.0001" type="number" required/>
                 <select ref={refCurrency} name="currency" defaultValue="soles">
                     <option value="soles">S/.</option>
                     <option value="dolares">$</option>
