@@ -1,5 +1,6 @@
 import BudgetStatistics from "./components/BudgetStatistics"
 import Calendar from "./components/Calendar"
+import CurrentDate from "./components/CurrentDate"
 import { ExpensesContextProvider } from "./components/ExpensesContext"
 import ExpensesRegister from "./components/ExpensesRegister"
 import TotalExpenses from "./components/TotalExpenses"
@@ -10,6 +11,7 @@ function App() {
     <>
       <ExpensesContextProvider>
         <header>
+          <CurrentDate />
         </header>
         <main>
           <ExpensesRegister />
