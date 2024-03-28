@@ -8,12 +8,12 @@ import TotalExpensesDetail from "./components/TotalExpensesDetail"
 
 function App() {
   return (
-    <>
+    <div className="flex flex-col items-center p-3">
       <ExpensesContextProvider>
         <header>
           <CurrentDate />
         </header>
-        <main>
+        <main className="grid grid-cols-[40%_60%] auto-rows-auto gap-3">
           <ExpensesRegister />
           <BudgetStatistics />
           <TotalExpenses />
@@ -21,7 +21,7 @@ function App() {
           <Calendar />
         </main>
       </ ExpensesContextProvider>
-    </>
+    </div>
   )
 }
 
