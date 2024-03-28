@@ -1,4 +1,5 @@
 import BudgetStatistics from "./components/BudgetStatistics"
+import Calendar from "./components/Calendar"
 import { ExpensesContextProvider } from "./components/ExpensesContext"
 import ExpensesRegister from "./components/ExpensesRegister"
 import TotalExpenses from "./components/TotalExpenses"
@@ -8,10 +9,11 @@ function App() {
   return (
     <>
       <ExpensesContextProvider>
-        <ExpensesRegister />
-        <BudgetStatistics />
-        <TotalExpenses />
-        <TotalExpensesDetail />
+          <ExpensesRegister />
+          <BudgetStatistics />
+          <TotalExpenses />
+          <TotalExpensesDetail />
+          <Calendar />
       </ ExpensesContextProvider>
     </>
   )
