@@ -9,11 +9,15 @@ function App() {
   return (
     <>
       <ExpensesContextProvider>
+        <header>
+        </header>
+        <main>
           <ExpensesRegister />
           <BudgetStatistics />
           <TotalExpenses />
           <TotalExpensesDetail />
           <Calendar />
+        </main>
       </ ExpensesContextProvider>
     </>
   )
