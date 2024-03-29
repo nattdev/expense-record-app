@@ -78,12 +78,14 @@ function ExpensesRegister() {
     );
 
     const expensesList = expenses.map(
-        (expense) => <li key={expense.id} className="flex">
-            <div onClick={() => handleExpenseDetail(expense.id)} className="flex justify-around">
-                <span>- {expense.currency == "soles" ? "S/." : "$"}</span>{expense.amount}
+        (expense) => <li key={expense.id} className="flex min-w-4 items-center justify-center">
+            <div onClick={() => handleExpenseDetail(expense.id)} className="flex min-w-full items-center">
+                <div className="min-w-fit">
+                    <span>- {expense.currency == "soles" ? "S/." : "$"}</span>{expense.amount}
+                </div>
                 <Popover content={expenseDetail} placement="bottom" trigger="click">
                     <div>
-                        <Badge color={expense.category == "alimentacion" ? "warning" : expense.category == "pasajes" ? "success" : expense.category == "compras" ? "indigo" : "dark"} className="mx-3 text-xs">
+                        <Badge color={expense.category == "alimentacion" ? "warning" : expense.category == "pasajes" ? "success" : expense.category == "compras" ? "indigo" : "dark"} className="mx-3 text-xs min-w-fit my-1">
                             {expense.category == "sin categoria" ? "sin categoría" : expense.category}
                         </Badge>
                     </div>
