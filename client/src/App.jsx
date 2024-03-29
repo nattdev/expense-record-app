@@ -8,9 +8,9 @@ import TotalExpensesDetail from "./components/TotalExpensesDetail"
 
 function App() {
   return (
-    <div className="flex flex-col items-center p-3">
+    <div className="flex flex-col items-center p-3 bg-slate-50">
       <ExpensesContextProvider>
-        <header>
+        <header className="pb-3">
           <CurrentDate />
         </header>
         <main className="grid grid-cols-[40%_60%] auto-rows-auto gap-3">
