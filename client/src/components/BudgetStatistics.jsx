@@ -20,7 +20,7 @@ function BudgetStatistics() {
         const totalAmount = expenses.reduce((total, expense) => total + expense.amount, 0);
         setTotalExpenses(totalAmount);
 
-        const expensesPercentage = Math.round((totalExpenses * 100) / currentBudget);
+        const expensesPercentage = Math.round((totalAmount * 100) / currentBudget);
         setCurrentProgress(expensesPercentage);
         setRemainingProgress(Math.round(100 - expensesPercentage));
 
@@ -41,24 +41,27 @@ function BudgetStatistics() {
     }
 
     return (
-        <div>
+        <div className="bg-[#A7CC15] p-6 rounded-3xl">
             <header>
-                <div>
-                    <input onChange={handleCurrentBadget} type="number" min={totalExpenses} step={0.01}></input>
-                    <p>Presupuesto del día</p>
+                <div className="flex items-center gap-1">
+                    <p className="font-medium text-2xl grow w-full">Presupuesto del día</p>
+                    <p className="w-fit">S/.</p>
+                    <input onChange={handleCurrentBadget} type="number" min={totalExpenses} step={0.01} className="[-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none rounded-md border-none text-center h-fit w-full text-2xl"></input>
                 </div>
-                <p>{isBudgetValid ? "" : "El presupuesto no puede ser menor que el gasto total."}</p>
+                <p className="text-slate-50 py-3 text-sm">{isBudgetValid ? "" : "* El presupuesto no puede ser menor que el gasto total."}</p>
             </header>
             <section>
                 <div>
-                    <Progress progress={currentProgress} />
-                    <div>
-                        <p>{currentProgress} %</p>
-                        <p>Gastado</p>
-                    </div>
-                    <div>
-                        <p>{remainingProgress} %</p>
-                        <p>Restante</p>
+                    <Progress progress={currentProgress} color="red" size="xl" className="bg-slate-100 rou" />
+                    <div className="flex text-center items-center w-full justify-around pt-2">
+                        <div className="text-rose-700 font-medium text-center">
+                            <p>{currentProgress} %</p>
+                            <p>Gastado</p>
+                        </div>
+                        <div className="font-medium">
+                            <p>{remainingProgress} %</p>
+                            <p>Restante</p>
+                        </div>
                     </div>
                 </div>
             </section>
