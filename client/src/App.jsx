@@ -13,7 +13,7 @@ function App() {
         <header className="pb-3">
           <CurrentDate />
         </header>
-        <main className="grid grid-cols-[40%_60%] auto-rows-auto gap-3">
+        <main className="grid grid-cols-[auto_auto] auto-rows-auto gap-3">
           <ExpensesRegister />
           <BudgetStatistics />
           <TotalExpenses />
