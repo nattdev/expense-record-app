@@ -140,13 +140,13 @@ function ExpensesRegister() {
     return (
         <div id="expense-register" className="row-span-3 bg-[#04394E] text-slate-200 p-6 rounded-3xl">
             <form action="" onSubmit={handleSubmitExpense} className="flex gap-1">
-                <input ref={refAmount} id="expense" name="expense" step="0.0001" type="number" required className="w-9/12 text-slate-600 border-none [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none" />
+                <input ref={refAmount} id="expense" name="expense" step="0.0001" type="number" required className="w-9/12 text-slate-600 border-none [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none rounded-md" />
 
-                <select ref={refCurrency} name="currency" defaultValue="soles" className="text-slate-600 border-none text-sm !p-2 !bg-none">
+                <select ref={refCurrency} name="currency" defaultValue="soles" className="text-slate-600 border-none text-sm !p-2 !bg-none rounded-md">
                     <option value="soles">S/.</option>
                     <option value="dolares">$</option>
                 </select>
-                <input type="submit" className="bg-slate-50 p-2 m-0 outline-none border-none" value={"✔️"}></input>
+                <input type="submit" className="bg-slate-50 p-2 m-0 outline-none border-none rounded-md" value={"✔️"}></input>
             </form>
             <ul id="expense-list" className="mt-3 relative">
                 {expensesList}
