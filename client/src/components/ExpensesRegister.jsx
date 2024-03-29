@@ -2,9 +2,9 @@ import React from "react";
 import { useEffect, useRef, useState } from "react";
 import { useExpenses } from "./ExpensesContext";
 import { Badge } from "flowbite-react";
+import { Popover, Button } from "flowbite-react";
 
 function ExpensesRegister() {
-
     const storedItems = JSON.parse(localStorage.getItem('expenses'));
 
     const initialExpenses = [
@@ -19,7 +19,7 @@ function ExpensesRegister() {
     ]
 
     const [numberId, setNumberId] = useState(9);
-    const [isDetailShown, setIsDetailShown] = useState(false);
+    const [isCategoryUpdate, setIsCategoryUpdate] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState("");
     const [selectedId, setSelectedId] = useState("");
 
@@ -40,33 +40,40 @@ function ExpensesRegister() {
 
     useEffect(() => {
         localStorage.setItem("expenses", JSON.stringify(expenses));
+        if (isCategoryUpdate) {
+            setSelectedCategory((expenses.find(expense => expense.id == selectedId)).category);
+            setIsCategoryUpdate(false);
+        }
     }, [expenses]);
 
     const expenseDetail = (
-        <div id="expense-detail-wrapper">
-            <header>
-                <p>Categoría:</p><button onClick={handleCloseDetail}>X</button>
+        <div id="expense-detail-wrapper" className="bg-white rounded-2xl p-3 text-black">
+            <header className="flex justify-between mb-3 font-medium">
+                <p>Categorías:</p>
             </header>
-            <ul>
-                <li>
-                    <input id="alimentacion" type="radio" name="category" value="alimentacion" onChange={handleCategoryChange} checked={selectedCategory === "alimentacion"}>
-                    </input>
-                    <label htmlFor="alimentacion">Alimentación
-                    </label>
-                </li>
-                <li>
-                    <input id="pasajes" type="radio" name="category" value="pasajes" onChange={handleCategoryChange} checked={selectedCategory === "pasajes"}>
-                    </input>
-                    <label htmlFor="pasajes">Pasajes
-                    </label>
-                </li>
-                <li>
-                    <input id="Compras" type="radio" name="category" value="compras" onChange={handleCategoryChange} checked={selectedCategory === "compras"}>
-                    </input>
-                    <label htmlFor="Compras">Compras
-                    </label>
-                </li>
-            </ul>
+            <div className="flex flex-col">
+                <ul className="flex flex-col gap-y-1">
+                    <li>
+                        <input id="alimentacion" type="radio" name="category" value="alimentacion" onChange={handleCategoryChange} checked={selectedCategory === "alimentacion"} className="hidden peer">
+                        </input>
+                        <label htmlFor="alimentacion" className="peer-checked:bg-amber-200 rounded-md px-3 border">Alimentación
+                        </label>
+                    </li>
+                    <li>
+                        <input id="pasajes" type="radio" name="category" value="pasajes" onChange={handleCategoryChange} checked={selectedCategory === "pasajes"} className="hidden peer">
+                        </input>
+                        <label htmlFor="pasajes" className="peer-checked:bg-green-200 rounded-md px-3 border">Pasajes
+                        </label>
+                    </li>
+                    <li>
+                        <input id="Compras" type="radio" name="category" value="compras" onChange={handleCategoryChange} checked={selectedCategory === "compras"} className="hidden peer">
+                        </input>
+                        <label htmlFor="Compras" className="peer-checked:bg-indigo-300 rounded-md px-3 border">Compras
+                        </label>
+                    </li>
+                </ul>
+                <Button onClick={handleCloseDetail} size="xs" className="mt-3">Actualizar</Button>
+            </div>
         </div>
     );
 
@@ -74,11 +81,15 @@ function ExpensesRegister() {
         (expense) => <li key={expense.id} className="flex">
             <div onClick={() => handleExpenseDetail(expense.id)} className="flex justify-around">
                 <span>- {expense.currency == "soles" ? "S/." : "$"}</span>{expense.amount}
-                <Badge color={expense.category == "alimentacion" ? "warning" : expense.category == "pasajes" ? "success" : expense.category == "compras" ? "indigo" : "dark"} className="mx-3 text-xs">
-                    {expense.category == "sin categoria" ? "sin categoría" : expense.category}
-                </Badge>
+                <Popover content={expenseDetail} placement="bottom" trigger="click">
+                    <div>
+                        <Badge color={expense.category == "alimentacion" ? "warning" : expense.category == "pasajes" ? "success" : expense.category == "compras" ? "indigo" : "dark"} className="mx-3 text-xs">
+                            {expense.category == "sin categoria" ? "sin categoría" : expense.category}
+                        </Badge>
+                    </div>
+                </Popover>
             </div>
-            <button onClick={() => handleDeleteExpense(expense.id)} className="ml-auto">❌</button>
+            <button onClick={() => handleDeleteExpense(expense.id)} className="ml-auto bg-slate-50 m-1 rounded-sm text-xs">❌</button>
         </li>
     );
 
@@ -103,12 +114,10 @@ function ExpensesRegister() {
 
     function handleExpenseDetail(id) {
         setSelectedId(id);
-        setIsDetailShown(true);
         setSelectedCategory((expenses.find(expense => expense.id == id)).category);
     }
 
     function handleCloseDetail() {
-        setIsDetailShown(false);
         setExpenses(expenses.map(expense => {
             if (expense.id === selectedId) {
                 return {
@@ -118,6 +127,8 @@ function ExpensesRegister() {
             }
             return expense;
         }))
+        setIsCategoryUpdate(true);
+        console.log()
     }
 
     function handleCategoryChange(event) {
@@ -135,10 +146,9 @@ function ExpensesRegister() {
                 </select>
                 <input type="submit" className="bg-slate-50 p-2 m-0 outline-none border-none" value={"✔️"}></input>
             </form>
-            <ul id="expense-list" className="mt-3">
+            <ul id="expense-list" className="mt-3 relative">
                 {expensesList}
             </ul>
-            {isDetailShown ? expenseDetail : ""}
         </div>
     )
 }
