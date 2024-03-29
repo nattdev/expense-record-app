@@ -140,7 +140,7 @@ function ExpensesRegister() {
             <form action="" onSubmit={handleSubmitExpense} className="flex gap-1">
                 <input ref={refAmount} id="expense" name="expense" step="0.0001" type="number" required className="w-9/12 text-slate-600 border-none [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none" />
 
-                <select ref={refCurrency} name="currency" defaultValue="soles" className="text-slate-600 border-none">
+                <select ref={refCurrency} name="currency" defaultValue="soles" className="text-slate-600 border-none text-sm !p-2 !bg-none">
                     <option value="soles">S/.</option>
                     <option value="dolares">$</option>
                 </select>
