@@ -58,7 +58,7 @@ function BudgetStatistics() {
             </header>
             <section>
                 <div>
-                    <Progress progress={currentProgress} color="red" size="xl" className="bg-slate-100 rou" />
+                    <Progress progress={currentProgress} color="red" size="xl" className="bg-slate-100" />
                     <div className="flex text-center items-center w-full justify-around pt-2">
                         <div className="text-rose-700 font-medium text-center">
                             <p>{currentProgress} %</p>
