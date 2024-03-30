@@ -22,17 +22,17 @@ function TotalExpensesDetail() {
     }, [expenses]);
 
     const categoriesDetail = (
-        categories.map((category, i) => <li key={i}><p>{category.name} :</p><p>{category.amount}</p></li>)
+        categories.map((category, i) => <li key={i}><p className="capitalize">{category.name} :</p><p className="font-bold">{category.amount}</p></li>)
     );
 
     return (
-        <div id="expenses-detail-wrapper">
-            <header>
+        <div id="expenses-detail-wrapper" className="bg-yellow-300 p-6 rounded-3xl">
+            <header className="text-2xl font-medium">
                 <p>Gastos Totales Detalle:</p>
-                <ul>
-                    {categoriesDetail}
-                </ul>
             </header>
+            <ul>
+                {categoriesDetail}
+            </ul>
         </div>
     )
 }
