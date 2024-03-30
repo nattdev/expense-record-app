@@ -3,6 +3,7 @@ import Calendar from "./components/Calendar"
 import CurrentDate from "./components/CurrentDate"
 import { ExpensesContextProvider } from "./components/ExpensesContext"
 import ExpensesRegister from "./components/ExpensesRegister"
+import RemainingBudget from "./components/RemainingBudget"
 import TotalExpenses from "./components/TotalExpenses"
 import TotalExpensesDetail from "./components/TotalExpensesDetail"
 
@@ -17,6 +18,7 @@ function App() {
           <ExpensesRegister />
           <BudgetStatistics />
           <TotalExpenses />
+          <RemainingBudget />
           <TotalExpensesDetail />
           <Calendar />
         </main>
