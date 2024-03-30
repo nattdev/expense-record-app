@@ -4,6 +4,7 @@ import { useExpenses } from "./ExpensesContext";
 
 
 function BudgetStatistics() {
+    const storedItemsBudget = JSON.parse(localStorage.getItem('budget'));
 
     const { expenses } = useExpenses();
     const { totalExpenses, setTotalExpenses } = useExpenses();
@@ -12,9 +13,16 @@ function BudgetStatistics() {
     const [remainingProgress, setRemainingProgress] = useState();
 
 
-    const [currentBudget, setCurrentBudget] = useState();
+    const [currentBudget, setCurrentBudget] = useState(0);
 
     const [isBudgetValid, setIsValidBudget] = useState(false);
+
+    useEffect(() => {
+        if (storedItemsBudget > 0) {
+            setCurrentBudget(storedItemsBudget);
+            setIsValidBudget(true);
+        }
+    }, []);
 
     useEffect(() => {
         const totalAmount = expenses.reduce((total, expense) => total + expense.amount, 0);
@@ -28,6 +36,8 @@ function BudgetStatistics() {
             setCurrentProgress(0);
             setRemainingProgress(0);
         }
+
+        localStorage.setItem("budget", currentBudget);
     }, [expenses, currentBudget, isBudgetValid]);
 
     const handleCurrentBadget = (event) => {
@@ -37,7 +47,6 @@ function BudgetStatistics() {
         } else {
             setIsValidBudget(false);
         }
-
     }
 
     return (
@@ -46,7 +55,7 @@ function BudgetStatistics() {
                 <div className="flex items-center gap-1">
                     <p className="font-medium text-2xl grow w-full">Presupuesto del día</p>
                     <p className="w-fit">S/.</p>
-                    <input onChange={handleCurrentBadget} type="number" min={totalExpenses} step={0.01} className="[-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none rounded-md border-none text-center h-fit w-full text-2xl"></input>
+                    <input onChange={handleCurrentBadget} type="number" min={totalExpenses} step={0.01} className="[-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none rounded-md border-none text-center h-fit w-full text-2xl" defaultValue={storedItemsBudget}></input>
                 </div>
                 <p className="text-slate-50 py-3 text-sm">{isBudgetValid ? "" : "* El presupuesto no puede ser menor que el gasto total."}</p>
             </header>
