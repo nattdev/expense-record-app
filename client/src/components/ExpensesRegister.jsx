@@ -72,26 +72,26 @@ function ExpensesRegister() {
                         </label>
                     </li>
                 </ul>
-                <Button onClick={handleCloseDetail} size="xs" className="mt-3">Actualizar</Button>
+                <Button onClick={handleCloseDetail} className="mt-3">Actualizar</Button>
             </div>
         </div>
     );
 
     const expensesList = expenses.map(
-        (expense) => <li key={expense.id} className="flex min-w-4 items-center justify-center">
-            <div onClick={() => handleExpenseDetail(expense.id)} className="flex min-w-full items-center">
+        (expense) => <li key={expense.id} className="flex items-center justify-center">
+            <div onClick={() => handleExpenseDetail(expense.id)} className="flex w-full items-center">
                 <div className="min-w-fit">
                     <span>- {expense.currency == "soles" ? "S/." : "$"}</span>{expense.amount}
                 </div>
                 <Popover content={expenseDetail} placement="bottom" trigger="click">
                     <div>
-                        <Badge color={expense.category == "alimentacion" ? "warning" : expense.category == "pasajes" ? "success" : expense.category == "compras" ? "indigo" : "dark"} className="mx-3 text-xs min-w-fit my-1">
+                        <Badge color={expense.category == "alimentacion" ? "warning" : expense.category == "pasajes" ? "success" : expense.category == "compras" ? "indigo" : "dark"} className="mx-3 text-base md:text-xl min-w-max my-1">
                             {expense.category == "sin categoria" ? "sin categoría" : expense.category}
                         </Badge>
                     </div>
                 </Popover>
             </div>
-            <button onClick={() => handleDeleteExpense(expense.id)} className="ml-auto bg-slate-50 m-1 rounded-sm text-xs">❌</button>
+            <button onClick={() => handleDeleteExpense(expense.id)} className="ml-auto bg-slate-50 m-1 rounded-sm text-xl">❌</button>
         </li>
     );
 
@@ -138,7 +138,7 @@ function ExpensesRegister() {
     }
 
     return (
-        <div id="expense-register" className="row-span-3 bg-[#04394E] text-slate-200 p-6 rounded-3xl">
+        <div id="expense-register" className="row-span-3 col-span-2 sm:col-span-1 bg-[#04394E] text-slate-200 sm:p-6 p-4 rounded-3xl">
             <form action="" onSubmit={handleSubmitExpense} className="flex gap-1">
                 <input ref={refAmount} id="expense" name="expense" step="0.0001" type="number" required className="w-9/12 text-slate-600 border-none [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none rounded-md" />
 
@@ -146,9 +146,9 @@ function ExpensesRegister() {
                     <option value="soles">S/.</option>
                     <option value="dolares">$</option>
                 </select>
-                <input type="submit" className="bg-slate-50 p-2 m-0 outline-none border-none rounded-md" value={"✔️"}></input>
+                <input type="submit" className="bg-slate-50 p-2 m-0 outline-none border-none rounded-md ml-auto" value={"✔️"}></input>
             </form>
-            <ul id="expense-list" className="mt-3 relative">
+            <ul id="expense-list" className="mt-3 relative w-full">
                 {expensesList}
             </ul>
         </div>
