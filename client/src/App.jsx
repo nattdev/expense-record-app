@@ -10,7 +10,7 @@ import TotalExpensesDetail from "./components/TotalExpensesDetail"
 
 function App() {
   return (
-    <div className="flex w-full flex-col items-center p-1 sm:p-3 bg-slate-50 text-lg md:text-xl lg:text-xl">
+    <div className="flex w-full flex-col items-center p-3 bg-slate-50 text-lg md:text-xl lg:text-xl">
       <ExpensesContextProvider>
         <header className="p-3 text-center">
           <h1 className="text-3xl font-medium pb-3">Expense Record App</h1>
