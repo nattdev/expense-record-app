@@ -8,13 +8,10 @@ function BudgetStatistics() {
 
     const { expenses } = useExpenses();
     const { totalExpenses, setTotalExpenses } = useExpenses();
+    const {currentBudget, setCurrentBudget} = useExpenses();
 
     const [currentProgress, setCurrentProgress] = useState();
     const [remainingProgress, setRemainingProgress] = useState();
-
-
-    const [currentBudget, setCurrentBudget] = useState(0);
-
     const [isBudgetValid, setIsValidBudget] = useState(false);
 
     useEffect(() => {

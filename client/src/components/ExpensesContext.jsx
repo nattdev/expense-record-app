@@ -14,9 +14,10 @@ export const useExpenses = () => {
 export const ExpensesContextProvider = ({children}) => {
     const [expenses, setExpenses] = useState([]);
     const [totalExpenses, setTotalExpenses] = useState();
+    const [currentBudget, setCurrentBudget] = useState(0);
 
     return (
-        <ExpensesContext.Provider value={{expenses, setExpenses, totalExpenses, setTotalExpenses}}>
+        <ExpensesContext.Provider value={{expenses, setExpenses, totalExpenses, setTotalExpenses, currentBudget, setCurrentBudget}}>
             {children}
         </ExpensesContext.Provider>
     ) 
