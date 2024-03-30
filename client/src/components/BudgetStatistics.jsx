@@ -8,7 +8,7 @@ function BudgetStatistics() {
 
     const { expenses } = useExpenses();
     const { totalExpenses, setTotalExpenses } = useExpenses();
-    const {currentBudget, setCurrentBudget} = useExpenses();
+    const { currentBudget, setCurrentBudget } = useExpenses();
 
     const [currentProgress, setCurrentProgress] = useState();
     const [remainingProgress, setRemainingProgress] = useState();
@@ -41,11 +41,12 @@ function BudgetStatistics() {
     }, [expenses, currentBudget, isBudgetValid]);
 
     const handleCurrentBadget = (event) => {
-        if (event.target.value >= totalExpenses) {
+        if (parseInt(event.target.value) >= totalExpenses) {
             setIsValidBudget(true);
             setCurrentBudget(event.target.value);
         } else {
             setIsValidBudget(false);
+            setCurrentBudget(0);
         }
     }
 
