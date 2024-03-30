@@ -3,6 +3,7 @@ import Calendar from "./components/Calendar"
 import CurrentDate from "./components/CurrentDate"
 import { ExpensesContextProvider } from "./components/ExpensesContext"
 import ExpensesRegister from "./components/ExpensesRegister"
+import Footer from "./components/Footer"
 import RemainingBudget from "./components/RemainingBudget"
 import TotalExpenses from "./components/TotalExpenses"
 import TotalExpensesDetail from "./components/TotalExpensesDetail"
@@ -11,7 +12,7 @@ function App() {
   return (
     <div className="flex w-full flex-col items-center p-1 sm:p-3 bg-slate-50 text-lg md:text-xl lg:text-xl">
       <ExpensesContextProvider>
-        <header className="pb-3 text-center">
+        <header className="p-3 text-center">
           <h1 className="text-3xl font-medium pb-3">Expense Record App</h1>
           <CurrentDate />
         </header>
@@ -27,6 +28,7 @@ function App() {
             <Calendar />
           </div>
         </main>
+        <Footer />
       </ ExpensesContextProvider>
     </div>
   )
