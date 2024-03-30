@@ -18,6 +18,9 @@ function BudgetStatistics() {
         if (storedItemsBudget > 0) {
             setCurrentBudget(storedItemsBudget);
             setIsValidBudget(true);
+        } else {
+            setCurrentBudget(2000);
+            setIsValidBudget(true);
         }
     }, []);
 
