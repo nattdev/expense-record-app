@@ -10,7 +10,7 @@ function RemainingBudget() {
     }, [totalExpenses, currentBudget]);
 
     return (
-        <div id="remaining-budget-wrapper" className="bg-lime-500 p-6 rounded-3xl grow">
+        <div id="remaining-budget-wrapper" className="bg-lime-500 py-4 px-4 sm:p-6 rounded-3xl grow">
         <p className="font-bold text-3xl">{remainingBudget}</p><p>SALDO RESTANTE</p>
         </div>
     )

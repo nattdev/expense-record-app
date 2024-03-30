@@ -26,9 +26,9 @@ function TotalExpensesDetail() {
     );
 
     return (
-        <div id="expenses-detail-wrapper" className="bg-yellow-300 p-6 rounded-3xl">
-            <header className="text-2xl font-medium">
-                <p>Gastos Totales Detalle:</p>
+        <div id="expenses-detail-wrapper" className="bg-yellow-300 min-w-min sm:min-w-[350px] sm:p-6 p-4 rounded-3xl">
+            <header className="text-2xl font-medium pb-3">
+                <p>Detalle de Gastos:</p>
             </header>
             <ul>
                 {categoriesDetail}

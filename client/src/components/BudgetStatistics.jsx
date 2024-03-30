@@ -47,7 +47,7 @@ function BudgetStatistics() {
     }
 
     return (
-        <div className="bg-[#A7CC15] p-6 rounded-3xl">
+        <div className="bg-[#A7CC15] sm:p-6 p-4 rounded-3xl col-span-2 sm:col-span-1">
             <header>
                 <div className="flex items-center gap-1">
                     <p className="font-medium text-2xl grow w-full">Presupuesto del día</p>
@@ -59,7 +59,7 @@ function BudgetStatistics() {
             <section>
                 <div>
                     <Progress progress={currentProgress} color="red" size="xl" className="bg-slate-100" />
-                    <div className="flex text-center items-center w-full justify-around pt-2">
+                    <div className="flex text-center items-center w-full justify-around pt-2 text-xl">
                         <div className="text-rose-700 font-medium text-center">
                             <p>{currentProgress} %</p>
                             <p>Gastado</p>
