@@ -17,8 +17,10 @@ function App() {
         <main className="grid grid-cols-[auto_auto] auto-rows-auto gap-3">
           <ExpensesRegister />
           <BudgetStatistics />
-          <TotalExpenses />
-          <RemainingBudget />
+          <div>
+            <TotalExpenses />
+            <RemainingBudget />
+          </div>
           <TotalExpensesDetail />
           <Calendar />
         </main>
