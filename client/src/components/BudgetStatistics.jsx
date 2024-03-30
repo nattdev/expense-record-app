@@ -47,7 +47,7 @@ function BudgetStatistics() {
     }
 
     return (
-        <div className="bg-[#A7CC15] sm:p-6 p-4 rounded-3xl col-span-2 sm:col-span-1">
+        <div className="bg-[#A7CC15] sm:p-6 p-4 rounded-3xl col-span-2 sm:col-span-1 order-1 sm:order-none">
             <header>
                 <div className="flex items-center gap-1">
                     <p className="font-medium text-2xl grow w-full">Presupuesto del día</p>

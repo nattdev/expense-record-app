@@ -19,11 +19,11 @@ function App() {
         <main className="grid grid-cols-[auto_auto] auto-rows-auto gap-3">
           <ExpensesRegister />
           <BudgetStatistics />
-          <div className="flex justify-between text-center text-white gap-2 col-span-2 sm:col-span-1">
+          <div className="flex justify-between text-center text-white gap-2 col-span-2 sm:col-span-1 order-2 sm:order-none">
             <TotalExpenses />
             <RemainingBudget />
           </div>
-          <div className="flex flex-col lg:flex-row gap-2 col-span-2 sm:col-span-1">
+          <div className="flex flex-col lg:flex-row gap-2 col-span-2 sm:col-span-1 order-4 sm:order-none">
             <TotalExpensesDetail />
             <Calendar />
           </div>
