@@ -5,7 +5,7 @@ import { Badge } from "flowbite-react";
 import { Popover, Button } from "flowbite-react";
 
 function ExpensesRegister() {
-    const storedItems = JSON.parse(localStorage.getItem('expenses'));
+    const storedItemsExpenses = JSON.parse(localStorage.getItem('expenses'));
 
     const initialExpenses = [
         { id: 1, currency: "soles", category: "alimentacion", "amount": 200 },
@@ -29,9 +29,9 @@ function ExpensesRegister() {
     const refCurrency = useRef();
 
     useEffect(() => {
-        if (storedItems !== null) {
-            setExpenses(storedItems);
-            const maxId = storedItems.reduce((max, expense) => expense.id > max ? expense.id : max, 0);
+        if (storedItemsExpenses !== null) {
+            setExpenses(storedItemsExpenses);
+            const maxId = storedItemsExpenses.reduce((max, expense) => expense.id > max ? expense.id : max, 0);
             setNumberId(maxId + 1);
         } else {
             setExpenses(initialExpenses);
