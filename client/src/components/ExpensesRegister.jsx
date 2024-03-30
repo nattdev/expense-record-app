@@ -144,7 +144,7 @@ function ExpensesRegister() {
 
                 <select ref={refCurrency} name="currency" defaultValue="soles" className="text-slate-600 border-none text-sm !p-2 !bg-none rounded-md">
                     <option value="soles">S/.</option>
-                    <option value="dolares">$</option>
+                    {/* <option value="dolares">$</option> */}
                 </select>
                 <input type="submit" className="bg-slate-50 p-2 m-0 outline-none border-none rounded-md ml-auto" value={"✔️"}></input>
             </form>
