@@ -11,7 +11,7 @@ function RemainingBudget() {
 
     return (
         <div id="remaining-budget-wrapper" className="bg-lime-500 py-4 px-4 sm:p-6 rounded-3xl grow">
-        <p className="font-bold text-2xl sm:text-3xl">{remainingBudget}</p><p>SALDO RESTANTE</p>
+        <p className="font-bold text-2xl sm:text-3xl">{remainingBudget < 0 ? 0 : remainingBudget}</p><p>SALDO RESTANTE</p>
         </div>
     )
 }
