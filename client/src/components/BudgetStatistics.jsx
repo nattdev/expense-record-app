@@ -37,8 +37,11 @@ function BudgetStatistics() {
             setRemainingProgress(0);
         }
 
+        if (remainingProgress < 0) {
+            setIsValidBudget(false);
+        }
         localStorage.setItem("budget", currentBudget);
-    }, [expenses, currentBudget, isBudgetValid]);
+    }, [expenses, currentBudget, isBudgetValid, remainingProgress]);
 
     const handleCurrentBadget = (event) => {
         if (parseInt(event.target.value) >= totalExpenses) {
