@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useExpenses } from "./ExpensesContext";
+import { Badge } from "flowbite-react";
 
 function TotalExpensesDetail() {
 
@@ -22,7 +23,12 @@ function TotalExpensesDetail() {
     }, [expenses]);
 
     const categoriesDetail = (
-        categories.map((category, i) => <li key={i} className="flex m-1"><p className="capitalize mr-3 bg-white p-1 rounded-md">{category.name} :</p><p className="font-bold">{category.amount}</p></li>)
+        categories.map((category, i) => <li key={i} className="flex m-1 items-center">
+            <Badge color={category.name == "alimentacion" ? "warning" : category.name == "pasajes" ? "success" : category.name == "compras" ? "indigo" : "dark"} className="text-base md:text-xl min-w-max">
+                <p className="capitalize rounded-md">{category.name} :</p>
+            </Badge>
+            <p className="ml-3 font-medium">{category.amount}</p>
+        </li>)
     );
 
     return (
