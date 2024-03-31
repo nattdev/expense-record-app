@@ -22,7 +22,7 @@ function TotalExpensesDetail() {
     }, [expenses]);
 
     const categoriesDetail = (
-        categories.map((category, i) => <li key={i} className="flex"><p className="capitalize mr-3">{category.name} :</p><p className="font-bold">{category.amount}</p></li>)
+        categories.map((category, i) => <li key={i} className="flex m-1"><p className="capitalize mr-3 bg-white p-1 rounded-md">{category.name} :</p><p className="font-bold">{category.amount}</p></li>)
     );
 
     return (
