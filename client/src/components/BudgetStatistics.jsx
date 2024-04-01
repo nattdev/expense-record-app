@@ -32,6 +32,10 @@ function BudgetStatistics() {
         setCurrentProgress(expensesPercentage);
         setRemainingProgress(Math.round(100 - expensesPercentage));
 
+        if(currentBudget >= totalAmount) {
+            setIsValidBudget(true);
+        }
+
         if (!isBudgetValid) {
             setCurrentProgress(0);
             setRemainingProgress(0);
