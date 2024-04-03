@@ -4,8 +4,6 @@ import { useExpenses } from "./ExpensesContext";
 
 
 function BudgetStatistics() {
-    const storedItemsBudget = JSON.parse(localStorage.getItem('budget'));
-
     const { expenses } = useExpenses();
     const { totalExpenses, setTotalExpenses } = useExpenses();
     const { currentBudget, setCurrentBudget } = useExpenses();
@@ -13,6 +11,8 @@ function BudgetStatistics() {
     const [currentProgress, setCurrentProgress] = useState();
     const [remainingProgress, setRemainingProgress] = useState();
     const [isBudgetValid, setIsValidBudget] = useState(false);
+
+    const storedItemsBudget = currentBudget ? currentBudget : JSON.parse(localStorage.getItem('budget'));
 
     useEffect(() => {
         if (storedItemsBudget > 0) {
@@ -42,7 +42,6 @@ function BudgetStatistics() {
         if (currentBudget) {
             localStorage.setItem("budget", currentBudget);
         }
-        
     }, [expenses, currentBudget, isBudgetValid, remainingProgress]);
 
     const handleCurrentBadget = (event) => {
