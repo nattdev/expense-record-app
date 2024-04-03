@@ -83,7 +83,7 @@ function ExpensesRegister() {
                 <div className="min-w-fit">
                     <span>- {expense.currency == "soles" ? "S/." : "$"}</span>{expense.amount}
                 </div>
-                <Popover content={expenseDetail} placement="bottom" trigger="click" className="bg-white">
+                <Popover content={expenseDetail} placement="bottom" trigger="click" className="bg-white border border-slate-200 rounded-xl dark:border-white">
                     <div>
                         <Badge color={expense.category == "alimentacion" ? "warning" : expense.category == "pasajes" ? "success" : expense.category == "compras" ? "indigo" : "dark"} className="mx-3 text-base md:text-xl min-w-max my-1">
                             {expense.category == "sin categoria" ? "sin categoría" : expense.category}
