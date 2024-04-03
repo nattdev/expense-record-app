@@ -14,7 +14,7 @@ function App() {
     <div className="flex w-full flex-col items-center p-3 bg-slate-50 text-lg md:text-xl lg:text-xl dark:text-slate-300 dark:bg-[#2E4B57] text-slate-800">
       <ExpensesContextProvider>
         <header className="p-3 text-center dark:text-white relative">
-          <div className="flex items-center">
+          <div className="flex flex-col sm:flex-row items-center">
             <h1 className="text-3xl font-medium pb-3 mr-3">💸 Expense Record App</h1>
             <ColorModeSwitch />
           </div>

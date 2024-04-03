@@ -15,7 +15,7 @@ function CurrentDate() {
     const formattedDate = formatDate(currentDate);
 
     return (
-        <div className="font-light">
+        <div className="font-light text-base sm:text-xl m-3">
             {formattedDate}
         </div>
     );
