@@ -32,18 +32,14 @@ function BudgetStatistics() {
         setCurrentProgress(expensesPercentage);
         setRemainingProgress(Math.round(100 - expensesPercentage));
 
-        if(currentBudget >= totalAmount) {
+        if (currentBudget >= totalAmount) {
             setIsValidBudget(true);
-        }
-
-        if (!isBudgetValid) {
+        } else {
+            setIsValidBudget(false);
             setCurrentProgress(0);
             setRemainingProgress(0);
         }
 
-        if (remainingProgress < 0) {
-            setIsValidBudget(false);
-        }
         localStorage.setItem("budget", currentBudget);
     }, [expenses, currentBudget, isBudgetValid, remainingProgress]);
 
