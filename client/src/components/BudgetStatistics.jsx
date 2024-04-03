@@ -50,11 +50,10 @@ function BudgetStatistics() {
     const handleCurrentBadget = (event) => {
         if (parseInt(event.target.value) >= totalExpenses) {
             setIsValidBudget(true);
-            setCurrentBudget(event.target.value);
         } else {
             setIsValidBudget(false);
-            setCurrentBudget(0);
         }
+        setCurrentBudget(event.target.value);
     }
 
     return (
