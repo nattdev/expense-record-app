@@ -1,5 +1,6 @@
 import BudgetStatistics from "./components/BudgetStatistics"
 import Calendar from "./components/Calendar"
+import ColorModeSwitch from "./components/ColorModeSwitch"
 import CurrentDate from "./components/CurrentDate"
 import { ExpensesContextProvider } from "./components/ExpensesContext"
 import ExpensesRegister from "./components/ExpensesRegister"
@@ -12,8 +13,11 @@ function App() {
   return (
     <div className="flex w-full flex-col items-center p-3 bg-slate-50 text-lg md:text-xl lg:text-xl dark:text-slate-300 dark:bg-[#2E4B57] text-slate-800">
       <ExpensesContextProvider>
-        <header className="p-3 text-center dark:text-white">
-          <h1 className="text-3xl font-medium pb-3">💸 Expense Record App</h1>
+        <header className="p-3 text-center dark:text-white relative">
+          <div className="flex items-center">
+            <h1 className="text-3xl font-medium pb-3 mr-3">💸 Expense Record App</h1>
+            <ColorModeSwitch />
+          </div>
           <CurrentDate />
         </header>
         <main className="grid grid-cols-[auto_auto] auto-rows-auto gap-3">
