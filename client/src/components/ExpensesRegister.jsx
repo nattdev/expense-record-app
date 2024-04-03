@@ -143,7 +143,7 @@ function ExpensesRegister() {
                 <p>Registro de Gastos:</p>
             </header>
             <form action="" onSubmit={handleSubmitExpense} className="flex gap-1">
-                <input ref={refAmount} id="expense" name="expense" step="0.0001" type="number" required className="w-9/12 text-slate-600 border [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none rounded-md" placeholder="Ingresa el Gasto"/>
+                <input ref={refAmount} id="expense" name="expense" step="0.01" type="number" required className="w-9/12 text-slate-600 border [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none rounded-md" placeholder="Ingresa el Gasto"/>
 
                 <select ref={refCurrency} name="currency" defaultValue="soles" className="text-slate-600 border-none text-sm !p-2 !bg-none rounded-md">
                     <option value="soles">S/.</option>

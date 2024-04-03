@@ -9,7 +9,7 @@ function TotalExpensesDetail() {
     const calculateTotalByCategory = (expenses, category) => {
         const filteredExpenses = expenses.filter(expense => expense.category.includes(category));
         const totalAmountByCategory = filteredExpenses.reduce((total, expense) => total + expense.amount, 0);
-        return totalAmountByCategory;
+        return totalAmountByCategory.toFixed(2);
     };
 
     const categories = [

@@ -26,7 +26,7 @@ function BudgetStatistics() {
 
     useEffect(() => {
         const totalAmount = expenses.reduce((total, expense) => total + expense.amount, 0);
-        setTotalExpenses(totalAmount);
+        setTotalExpenses(totalAmount.toFixed(2));
 
         const expensesPercentage = Math.round((totalAmount * 100) / currentBudget);
         setCurrentProgress(expensesPercentage);
