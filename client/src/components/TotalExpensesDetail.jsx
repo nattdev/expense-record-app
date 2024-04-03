@@ -32,7 +32,7 @@ function TotalExpensesDetail() {
     );
 
     return (
-        <div id="expenses-detail-wrapper" className="bg-yellow-300 min-w-min sm:min-w-[350px] sm:p-6 p-4 rounded-3xl">
+        <div id="expenses-detail-wrapper" className="dark:bg-yellow-300 text-yellow-400 dark:text-slate-800 bg-white shadow-md min-w-min sm:min-w-[350px] sm:p-6 p-4 rounded-3xl">
             <header className="text-2xl font-medium pb-3">
                 <p>Detalle de Gastos:</p>
             </header>

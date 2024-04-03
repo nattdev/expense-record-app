@@ -58,18 +58,18 @@ function BudgetStatistics() {
     }
 
     return (
-        <div className="bg-[#A7CC15] sm:p-6 p-4 rounded-3xl col-span-2 sm:col-span-1 order-2 sm:order-none">
+        <div className="dark:bg-[#A7CC15] sm:p-6 p-4 rounded-3xl col-span-2 sm:col-span-1 order-2 sm:order-none bg-white shadow-md dark:text-slate-700">
             <header>
                 <div className="flex items-center gap-1">
                     <p className="font-medium text-2xl grow w-full">Presupuesto del día</p>
                     <p className="w-fit">S/.</p>
-                    <input onChange={handleCurrentBadget} type="number" min={totalExpenses} step={0.01} className="[-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none rounded-md border-none text-center h-fit w-full text-xl sm:text-2xl" defaultValue={storedItemsBudget} placeholder="Ingresa el monto"></input>
+                    <input onChange={handleCurrentBadget} type="number" min={totalExpenses} step={0.01} className="[-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none rounded-md border text-center h-fit w-full text-xl sm:text-2xl dark:text-slate-700" defaultValue={storedItemsBudget} placeholder="Ingresa el monto"></input>
                 </div>
-                <p className="text-slate-50 py-3 text-sm">{isBudgetValid || remainingProgress !== 0 ? "" : "* El presupuesto no puede ser menor que el gasto total."}</p>
+                <p className="dark:text-slate-50 py-3 text-sm">{isBudgetValid || remainingProgress !== 0 ? "" : "* El presupuesto no puede ser menor que el gasto total."}</p>
             </header>
             <section>
                 <div>
-                    <Progress progress={currentProgress} color="red" size="xl" className="bg-slate-100" />
+                    <Progress progress={currentProgress} color="red" size="xl" className="bg-slate-100 dark:bg-white" />
                     <div className="flex text-center items-center w-full justify-around pt-2 text-xl">
                         <div className="text-rose-700 font-medium text-center">
                             <p>{currentProgress} %</p>

@@ -52,23 +52,23 @@ function ExpensesRegister() {
                 <p>Categorías:</p>
             </header>
             <div className="flex flex-col">
-                <ul className="flex flex-col gap-y-1">
+                <ul className="flex flex-col">
                     <li>
                         <input id="alimentacion" type="radio" name="category" value="alimentacion" onChange={handleCategoryChange} checked={selectedCategory === "alimentacion"} className="hidden peer">
                         </input>
-                        <label htmlFor="alimentacion" className="peer-checked:bg-amber-200 rounded-md px-3 border">Alimentación
+                        <label htmlFor="alimentacion" className="peer-checked:bg-amber-200 rounded-md border inline-block px-2 py-1 m-1">Alimentación
                         </label>
                     </li>
                     <li>
                         <input id="pasajes" type="radio" name="category" value="pasajes" onChange={handleCategoryChange} checked={selectedCategory === "pasajes"} className="hidden peer">
                         </input>
-                        <label htmlFor="pasajes" className="peer-checked:bg-green-200 rounded-md px-3 border">Pasajes
+                        <label htmlFor="pasajes" className="peer-checked:bg-green-200 rounded-md border inline-block px-2 py-1 m-1">Pasajes
                         </label>
                     </li>
                     <li>
-                        <input id="Compras" type="radio" name="category" value="compras" onChange={handleCategoryChange} checked={selectedCategory === "compras"} className="hidden peer">
+                        <input id="Compras" type="radio" name="category" value="compras" onChange={handleCategoryChange} checked={selectedCategory === "compras"} className="hidden peer ">
                         </input>
-                        <label htmlFor="Compras" className="peer-checked:bg-indigo-300 rounded-md px-3 border">Compras
+                        <label htmlFor="Compras" className="peer-checked:bg-indigo-300 rounded-md border inline-block px-2 py-1 m-1 ">Compras
                         </label>
                     </li>
                 </ul>
@@ -138,18 +138,18 @@ function ExpensesRegister() {
     }
 
     return (
-        <div id="expense-register" className="row-span-3 col-span-2 sm:col-span-1 bg-[#04394E] text-slate-200 sm:p-6 p-4 rounded-3xl order-3 sm:order-none">
+        <div id="expense-register" className="row-span-3 col-span-2 sm:col-span-1 dark:bg-[#04394E] sm:p-6 p-4 rounded-3xl order-3 sm:order-none bg-white shadow-md">
             <header className="pb-6 font-medium text-2xl">
                 <p>Registro de Gastos:</p>
             </header>
             <form action="" onSubmit={handleSubmitExpense} className="flex gap-1">
-                <input ref={refAmount} id="expense" name="expense" step="0.0001" type="number" required className="w-9/12 text-slate-600 border-none [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none rounded-md" placeholder="Ingresa el Gasto"/>
+                <input ref={refAmount} id="expense" name="expense" step="0.0001" type="number" required className="w-9/12 text-slate-600 border [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none rounded-md" placeholder="Ingresa el Gasto"/>
 
                 <select ref={refCurrency} name="currency" defaultValue="soles" className="text-slate-600 border-none text-sm !p-2 !bg-none rounded-md">
                     <option value="soles">S/.</option>
                     {/* <option value="dolares">$</option> */}
                 </select>
-                <input type="submit" className="bg-slate-50 p-2 m-0 outline-none border-none rounded-md ml-auto" value={"✔️"}></input>
+                <input type="submit" className="dark:bg-slate-50 bg-slate-200 p-2 m-0 outline-none border-none rounded-md ml-auto" value={"✔️"}></input>
             </form>
             <ul id="expense-list" className="mt-3 relative w-full">
                 {expensesList}
