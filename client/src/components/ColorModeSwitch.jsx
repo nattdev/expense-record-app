@@ -3,13 +3,30 @@ import darkModeIcon from "../assets/icons/darkModeIcon.svg";
 import lightModeIcon from "../assets/icons/lightModeIcon.svg";
 
 function ColorModeSwitch() {
-    const [isDarkMode, setIsDarkMode] = useState(false);
+    const storedItemTheme = localStorage.getItem('theme');
+
+    const [isDarkMode, setIsDarkMode] = useState();
+
+    useEffect(() => {
+        if (storedItemTheme !== null) {
+            localStorage.setItem('theme', storedItemTheme);
+            if (storedItemTheme == "dark") {
+                setIsDarkMode(false);
+            } else {
+                setIsDarkMode(true);
+            }
+        } else {
+            setIsDarkMode(false);
+        }
+    }, []);
 
     useEffect(() => {
         if (isDarkMode === false) {
             document.querySelector('html').classList.add('dark')
+            localStorage.setItem('theme', 'dark');
         } else {
             document.querySelector('html').classList.remove('dark')
+            localStorage.setItem('theme', 'light');
         }
     }, [isDarkMode]);
 
