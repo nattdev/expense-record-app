@@ -16,7 +16,7 @@ function ColorModeSwitch() {
                 setIsDarkMode(true);
             }
         } else {
-            setIsDarkMode(false);
+            setIsDarkMode(true);
         }
     }, []);
 
