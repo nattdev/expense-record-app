@@ -2,6 +2,7 @@ import BudgetStatistics from "./components/BudgetStatistics"
 import Calendar from "./components/Calendar"
 import ColorModeSwitch from "./components/ColorModeSwitch"
 import CurrentDate from "./components/CurrentDate"
+import ToolsBar from "./components/ToolsBar"
 import { ExpensesContextProvider } from "./components/ExpensesContext"
 import ExpensesRegister from "./components/ExpensesRegister"
 import Footer from "./components/Footer"
@@ -19,6 +20,7 @@ function App() {
             <ColorModeSwitch />
           </div>
           <CurrentDate />
+          <ToolsBar />
         </header>
         <main className="grid grid-cols-[auto_auto] auto-rows-auto gap-3">
           <ExpensesRegister />
