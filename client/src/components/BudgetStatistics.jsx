@@ -8,8 +8,8 @@ function BudgetStatistics() {
     const { totalExpenses, setTotalExpenses } = useExpenses();
     const { currentBudget, setCurrentBudget } = useExpenses();
 
-    const [currentProgress, setCurrentProgress] = useState();
-    const [remainingProgress, setRemainingProgress] = useState();
+    const [currentProgress, setCurrentProgress] = useState(0);
+    const [remainingProgress, setRemainingProgress] = useState(0);
     const [isBudgetValid, setIsValidBudget] = useState(false);
     const budgetInput = useRef();
 

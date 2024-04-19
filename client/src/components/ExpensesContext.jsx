@@ -13,7 +13,7 @@ export const useExpenses = () => {
 
 export const ExpensesContextProvider = ({children}) => {
     const [expenses, setExpenses] = useState([]);
-    const [totalExpenses, setTotalExpenses] = useState();
+    const [totalExpenses, setTotalExpenses] = useState(0);
     const [currentBudget, setCurrentBudget] = useState(0);
 
     return (
