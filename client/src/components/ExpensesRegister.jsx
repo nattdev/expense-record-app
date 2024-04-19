@@ -7,17 +7,6 @@ import { Popover, Button } from "flowbite-react";
 function ExpensesRegister() {
     const storedItemsExpenses = JSON.parse(localStorage.getItem('expenses'));
 
-    const initialExpenses = [
-        { id: 1, currency: "soles", category: "alimentacion", "amount": 200 },
-        { id: 2, currency: "soles", category: "compras", "amount": 20.02 },
-        { id: 3, currency: "soles", category: "pasajes", "amount": 4.01 },
-        { id: 4, currency: "soles", category: "sin categoria", "amount": 5.20 },
-        { id: 5, currency: "soles", category: "sin categoria", "amount": 1002.20 },
-        { id: 6, currency: "soles", category: "sin categoria", "amount": 10 },
-        { id: 7, currency: "soles", category: "sin categoria", "amount": 200 },
-        { id: 8, currency: "soles", category: "sin categoria", "amount": 20.02 }
-    ]
-
     const [numberId, setNumberId] = useState(9);
     const [isCategoryUpdate, setIsCategoryUpdate] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState("");
@@ -33,8 +22,6 @@ function ExpensesRegister() {
             setExpenses(storedItemsExpenses);
             const maxId = storedItemsExpenses.reduce((max, expense) => expense.id > max ? expense.id : max, 0);
             setNumberId(maxId + 1);
-        } else {
-            setExpenses(initialExpenses);
         }
     }, []);
 
@@ -130,7 +117,6 @@ function ExpensesRegister() {
             return expense;
         }))
         setIsCategoryUpdate(true);
-        console.log()
     }
 
     function handleCategoryChange(event) {
@@ -143,7 +129,7 @@ function ExpensesRegister() {
                 <p>Registro de Gastos:</p>
             </header>
             <form action="" onSubmit={handleSubmitExpense} className="flex gap-1">
-                <input ref={refAmount} id="expense" name="expense" step="0.01" type="number" required className="w-9/12 text-slate-600 border [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none rounded-md" placeholder="Ingresa el Gasto"/>
+                <input ref={refAmount} id="expense" name="expense" step="0.01" type="number" required className="w-9/12 text-slate-600 border [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none rounded-md" placeholder="Ingresa el Gasto" />
 
                 <select ref={refCurrency} name="currency" defaultValue="soles" className="text-slate-600 border-none text-sm !p-2 !bg-none rounded-md">
                     <option value="soles">S/.</option>
