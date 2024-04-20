@@ -66,10 +66,13 @@ function ExpensesRegister() {
     );
 
     const expenseCountSubmit = (
-        <div>
-            <form action="" onSubmit={handleCountChange} className="">
-                <input ref={refCount} id="expenseCount" name="expenseCount" step="1" type="number" min="1" className="w-9/12 text-slate-600 border [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none rounded-md" placeholder="Cantidad" />
-                <input type="submit" className="dark:bg-slate-50 bg-slate-200 p-2 m-0 outline-none border-none rounded-md ml-auto text-sm" value={"Actualizar"}></input>
+        <div className="p-3 text-black">
+            <header className="flex justify-between mb-3 font-medium">
+                <p>Cantidad:</p>
+            </header>
+            <form action="" onSubmit={handleCountChange} className="flex flex-col justify-center items-left">
+                <input ref={refCount} id="expenseCount" name="expenseCount" step="1" type="number" min="1" defaultValue="1" className="w-16 text-slate-600 border [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none rounded-md" placeholder="Cantidad" />
+                <Button type="submit" className="mt-3">Actualizar</Button>
             </form>
         </div>
     )
@@ -77,14 +80,16 @@ function ExpensesRegister() {
     const expensesList = expenses.map(
         (expense) => <li key={expense.id} className="flex items-center justify-center">
             <div onClick={() => handleExpenseDetail(expense.id)} className="flex w-full items-center">
-                <div className="min-w-fit">
-                    <span>{expense.currency == "soles" ? "S/." : "$"}</span>{expense.amount}
-                </div>
-                <Popover content={expenseCountSubmit} placement="bottom" trigger="click" className="bg-white border border-slate-200 rounded-xl dark:border-white">
-                    <div>
-                        <Badge> x {expense.count}</Badge>
+                <div className="flex justify-center items-center">
+                    <div className="min-w-fit">
+                        <span>{expense.currency == "soles" ? "S/." : "$"}</span>{expense.amount}
                     </div>
-                </Popover>
+                    <Popover content={expenseCountSubmit} placement="bottom" trigger="click" className="bg-white border border-slate-200 rounded-xl dark:border-white">
+                        <div>
+                            <Badge className="ml-1"> x {expense.count}</Badge>
+                        </div>
+                    </Popover>
+                </div>
                 <Popover content={expenseDetail} placement="bottom" trigger="click" className="bg-white border border-slate-200 rounded-xl dark:border-white">
                     <div>
                         <Badge color={expense.category == "alimentacion" ? "warning" : expense.category == "pasajes" ? "success" : expense.category == "compras" ? "indigo" : "dark"} className="mx-3 text-base md:text-xl min-w-max my-1">
