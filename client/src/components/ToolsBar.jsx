@@ -4,14 +4,14 @@ function ToolsBar() {
     const { setExpenses, setCurrentBudget } = useExpenses();
 
     const initialExpenses = [
-        { id: 1, currency: "soles", category: "alimentacion", "amount": 200 },
-        { id: 2, currency: "soles", category: "compras", "amount": 20.02 },
-        { id: 3, currency: "soles", category: "pasajes", "amount": 4.01 },
-        { id: 4, currency: "soles", category: "sin categoria", "amount": 5.20 },
-        { id: 5, currency: "soles", category: "sin categoria", "amount": 1002.20 },
-        { id: 6, currency: "soles", category: "sin categoria", "amount": 10 },
-        { id: 7, currency: "soles", category: "sin categoria", "amount": 200 },
-        { id: 8, currency: "soles", category: "sin categoria", "amount": 20.02 }
+        { id: 1, currency: "soles", category: "alimentacion", "amount": 200, "count" : 1 },
+        { id: 2, currency: "soles", category: "compras", "amount": 20.02, "count" : 2 },
+        { id: 3, currency: "soles", category: "pasajes", "amount": 4.01, "count" : 1 },
+        { id: 4, currency: "soles", category: "sin categoria", "amount": 5.20, "count" : 3 },
+        { id: 5, currency: "soles", category: "sin categoria", "amount": 1002.20, "count" : 1 },
+        { id: 6, currency: "soles", category: "sin categoria", "amount": 10, "count" : 5 },
+        { id: 7, currency: "soles", category: "sin categoria", "amount": 200, "count" : 1 },
+        { id: 8, currency: "soles", category: "sin categoria", "amount": 20.02, "count" : 1 }
     ]
 
     function demoHandle() {

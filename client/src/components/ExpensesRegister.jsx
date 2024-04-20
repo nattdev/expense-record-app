@@ -68,7 +68,10 @@ function ExpensesRegister() {
         (expense) => <li key={expense.id} className="flex items-center justify-center">
             <div onClick={() => handleExpenseDetail(expense.id)} className="flex w-full items-center">
                 <div className="min-w-fit">
-                    <span>- {expense.currency == "soles" ? "S/." : "$"}</span>{expense.amount}
+                    <span>{expense.currency == "soles" ? "S/." : "$"}</span>{expense.amount}
+                </div>
+                <div>
+                    <Badge> x {expense.count}</Badge>
                 </div>
                 <Popover content={expenseDetail} placement="bottom" trigger="click" className="bg-white border border-slate-200 rounded-xl dark:border-white">
                     <div>
@@ -91,6 +94,7 @@ function ExpensesRegister() {
                 currency: refCurrency.current.value,
                 category: "sin categoria",
                 amount: parseFloat(refAmount.current.value),
+                count: 1,
             }
             setExpenses([...expenses, expenseData]);
             refAmount.current.value = "";
