@@ -16,6 +16,7 @@ function ExpensesRegister() {
 
     const refAmount = useRef();
     const refCurrency = useRef();
+    const refCount = useRef();
 
     useEffect(() => {
         if (storedItemsExpenses !== null) {
@@ -64,15 +65,26 @@ function ExpensesRegister() {
         </div>
     );
 
+    const expenseCountSubmit = (
+        <div>
+            <form action="" onSubmit={handleCountChange} className="">
+                <input ref={refCount} id="expenseCount" name="expenseCount" step="1" type="number" min="1" className="w-9/12 text-slate-600 border [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none rounded-md" placeholder="Cantidad" />
+                <input type="submit" className="dark:bg-slate-50 bg-slate-200 p-2 m-0 outline-none border-none rounded-md ml-auto text-sm" value={"Actualizar"}></input>
+            </form>
+        </div>
+    )
+
     const expensesList = expenses.map(
         (expense) => <li key={expense.id} className="flex items-center justify-center">
             <div onClick={() => handleExpenseDetail(expense.id)} className="flex w-full items-center">
                 <div className="min-w-fit">
                     <span>{expense.currency == "soles" ? "S/." : "$"}</span>{expense.amount}
                 </div>
-                <div>
-                    <Badge> x {expense.count}</Badge>
-                </div>
+                <Popover content={expenseCountSubmit} placement="bottom" trigger="click" className="bg-white border border-slate-200 rounded-xl dark:border-white">
+                    <div>
+                        <Badge> x {expense.count}</Badge>
+                    </div>
+                </Popover>
                 <Popover content={expenseDetail} placement="bottom" trigger="click" className="bg-white border border-slate-200 rounded-xl dark:border-white">
                     <div>
                         <Badge color={expense.category == "alimentacion" ? "warning" : expense.category == "pasajes" ? "success" : expense.category == "compras" ? "indigo" : "dark"} className="mx-3 text-base md:text-xl min-w-max my-1">
@@ -125,6 +137,20 @@ function ExpensesRegister() {
 
     function handleCategoryChange(event) {
         setSelectedCategory(event.target.value);
+    }
+
+    function handleCountChange(event) {
+        event.preventDefault();
+        const refCountValue = refCount.current.value;
+        setExpenses(expenses.map(expense => {
+            if (expense.id === selectedId) {
+                return {
+                    ...expense,
+                    ["count"]: refCountValue,
+                };
+            }
+            return expense;
+        }))
     }
 
     return (
