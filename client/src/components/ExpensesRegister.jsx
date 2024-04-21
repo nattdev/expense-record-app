@@ -13,6 +13,7 @@ function ExpensesRegister() {
     const [selectedId, setSelectedId] = useState("");
 
     const { expenses, setExpenses } = useExpenses();
+    const { categories, setCategories } = useExpenses();
 
     const refAmount = useRef();
     const refCurrency = useRef();
@@ -34,31 +35,27 @@ function ExpensesRegister() {
         }
     }, [expenses]);
 
+    const radioButtonsList = (
+        // categories.length > 0 ?
+        categories.map((category) =>
+            <li key={category.name}>
+                <input id={category.name} type="radio" name="category" value={category.name} onChange={handleCategoryChange} checked={selectedCategory === category.name} className="hidden peer">
+                </input>
+                <label htmlFor={category.name} className={(category.name == "alimentacion" ? "peer-checked:bg-amber-200" : category.name == "pasajes" ? "peer-checked:bg-green-200" : category.name == "compras" ? "peer-checked:bg-indigo-300" : "peer-checked:bg-slate-200") + " rounded-md border inline-block px-2 py-1 m-1 capitalize"}>{category.name}
+                </label>
+            </li>
+        )
+        // : <ul></ul>
+    );
+
     const expenseDetail = (
         <div id="expense-detail-wrapper" className="bg-white rounded-2xl p-3 text-black">
-            <header className="flex justify-between mb-3 font-medium">
+            <header className="flex justify-between mb-3 font-medium items-center">
                 <p>Categorías:</p>
             </header>
             <div className="flex flex-col">
                 <ul className="flex flex-col">
-                    <li>
-                        <input id="alimentacion" type="radio" name="category" value="alimentacion" onChange={handleCategoryChange} checked={selectedCategory === "alimentacion"} className="hidden peer">
-                        </input>
-                        <label htmlFor="alimentacion" className="peer-checked:bg-amber-200 rounded-md border inline-block px-2 py-1 m-1">Alimentación
-                        </label>
-                    </li>
-                    <li>
-                        <input id="pasajes" type="radio" name="category" value="pasajes" onChange={handleCategoryChange} checked={selectedCategory === "pasajes"} className="hidden peer">
-                        </input>
-                        <label htmlFor="pasajes" className="peer-checked:bg-green-200 rounded-md border inline-block px-2 py-1 m-1">Pasajes
-                        </label>
-                    </li>
-                    <li>
-                        <input id="Compras" type="radio" name="category" value="compras" onChange={handleCategoryChange} checked={selectedCategory === "compras"} className="hidden peer ">
-                        </input>
-                        <label htmlFor="Compras" className="peer-checked:bg-indigo-300 rounded-md border inline-block px-2 py-1 m-1 ">Compras
-                        </label>
-                    </li>
+                    {radioButtonsList}
                 </ul>
                 <Button onClick={handleCloseDetail} className="mt-3">Actualizar</Button>
             </div>
