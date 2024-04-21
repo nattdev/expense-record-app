@@ -5,6 +5,7 @@ import { Badge } from "flowbite-react";
 function TotalExpensesDetail() {
 
     const { expenses } = useExpenses();
+    const { categories, setCategories } = useExpenses();
 
     const calculateTotalByCategory = (expenses, category) => {
         const filteredExpenses = expenses.filter(expense => expense.category.includes(category));
@@ -12,7 +13,7 @@ function TotalExpensesDetail() {
         return totalAmountByCategory.toFixed(2);
     };
 
-    const categories = [
+    const initialCategories = [
         { name: "alimentacion", amount: calculateTotalByCategory(expenses, "alimentacion") },
         { name: "compras", amount: calculateTotalByCategory(expenses, "compras") },
         { name: "pasajes", amount: calculateTotalByCategory(expenses, "pasajes") },
@@ -20,6 +21,8 @@ function TotalExpensesDetail() {
     ];
 
     useEffect(() => {
+        localStorage.setItem("categories", JSON.stringify(categories));
+        setCategories(initialCategories);
     }, [expenses]);
 
     const categoriesDetail = (
