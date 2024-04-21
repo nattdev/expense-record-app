@@ -52,6 +52,11 @@ function ExpensesRegister() {
         <div id="expense-detail-wrapper" className="bg-white rounded-2xl p-3 text-black">
             <header className="flex justify-between mb-3 font-medium items-center">
                 <p>Categorías:</p>
+                <button>
+                    <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 7.757v8.486M7.757 12h8.486M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                </button>
             </header>
             <div className="flex flex-col">
                 <ul className="flex flex-col">
