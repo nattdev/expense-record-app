@@ -5,29 +5,25 @@ import { Badge } from "flowbite-react";
 function TotalExpensesDetail() {
 
     const { expenses } = useExpenses();
-    const { categories, setCategories } = useExpenses();
-
-    const calculateTotalByCategory = (expenses, category) => {
-        const filteredExpenses = expenses.filter(expense => expense.category.includes(category));
-        const totalAmountByCategory = filteredExpenses.reduce((total, expense) => total + (expense.count * expense.amount), 0);
-        return totalAmountByCategory.toFixed(2);
-    };
-
-    const initialCategories = [
-        { name: "alimentacion", amount: calculateTotalByCategory(expenses, "alimentacion") },
-        { name: "compras", amount: calculateTotalByCategory(expenses, "compras") },
-        { name: "pasajes", amount: calculateTotalByCategory(expenses, "pasajes") },
-        { name: "sin categoria", amount: calculateTotalByCategory(expenses, "sin categoria") }
-    ];
+    const { categories, setCategories, calculateTotalByCategory } = useExpenses();
 
     useEffect(() => {
-        localStorage.setItem("categories", JSON.stringify(categories));
-        setCategories(initialCategories);
+        const categoriesList = expenses.reduce((acc, expense) => {
+            const index = acc.findIndex(category => category.name === expense.category);
+            if (index !== -1) {
+                acc[index].amount += expense.amount;
+            } else {
+                acc.push({ name: expense.category, amount: expense.amount });
+            }
+            return acc;
+        }, []).map(category => ({ name: category.name, amount: calculateTotalByCategory(expenses, category.name) }));
+
+        setCategories(categoriesList);
     }, [expenses]);
 
     const categoriesDetail = (
         categories.map((category, i) => <li key={i} className="flex m-1 items-center">
-            <Badge color={category.name == "alimentacion" ? "warning" : category.name == "pasajes" ? "success" : category.name == "compras" ? "indigo" : "dark"} className="text-base md:text-xl min-w-max">
+            <Badge color={category.name == "alimentacion" ? "warning" : category.name == "pasajes" ? "red" : category.name == "compras" ? "indigo" : "success"} className="text-base md:text-xl min-w-max">
                 <p className="capitalize rounded-md">{category.name} :</p>
             </Badge>
             <p className="ml-3 font-medium">{category.amount}</p>

@@ -18,6 +18,7 @@ function ExpensesRegister() {
     const refAmount = useRef();
     const refCurrency = useRef();
     const refCount = useRef();
+    const refCategory = useRef();
 
     useEffect(() => {
         if (storedItemsExpenses !== null) {
@@ -36,7 +37,6 @@ function ExpensesRegister() {
     }, [expenses]);
 
     const radioButtonsList = (
-        // categories.length > 0 ?
         categories.map((category) =>
             <li key={category.name}>
                 <input id={category.name} type="radio" name="category" value={category.name} onChange={handleCategoryChange} checked={selectedCategory === category.name} className="hidden peer">
@@ -45,20 +45,41 @@ function ExpensesRegister() {
                 </label>
             </li>
         )
-        // : <ul></ul>
     );
+
+    const expenseCategorySubmit = (
+        <div className="p-3 text-black">
+            <header className="flex justify-between mb-3 font-medium">
+                <p>Nueva Categoría:</p>
+            </header>
+            <form action="" onSubmit={handleCategoryCreate} className="flex flex-col justify-center items-left">
+                <input id="expenseCategory" name="expenseCategory" step="1" type="text" defaultValue="" ref={refCategory} className=" text-slate-600 border [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none rounded-md" placeholder="Categoría" />
+                <Button type="submit" className="mt-3">Agregar</Button>
+            </form>
+        </div>
+    );
+
+    function handleCategoryCreate(event) {
+        event.preventDefault();
+        const refCategoryValue = refCategory.current.value;
+        const categoryExists = categories.some(category => category.name === refCategoryValue);
+
+        if (!categoryExists) {
+            const newCategory = {
+                name: refCategoryValue,
+                amount: 0
+            }
+            setCategories([...categories, newCategory]);
+        }
+    }
 
     const expenseDetail = (
         <div id="expense-detail-wrapper" className="bg-white rounded-2xl p-3 text-black">
             <header className="flex justify-between mb-3 font-medium items-center">
                 <p>Categorías:</p>
-                <button>
-                    <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 7.757v8.486M7.757 12h8.486M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                    </svg>
-                </button>
             </header>
             <div className="flex flex-col">
+                {expenseCategorySubmit}
                 <ul className="flex flex-col">
                     {radioButtonsList}
                 </ul>
@@ -94,7 +115,7 @@ function ExpensesRegister() {
                 </div>
                 <Popover content={expenseDetail} placement="bottom" trigger="click" className="bg-white border border-slate-200 rounded-xl dark:border-white">
                     <div>
-                        <Badge color={expense.category == "alimentacion" ? "warning" : expense.category == "pasajes" ? "success" : expense.category == "compras" ? "indigo" : "dark"} className="mx-3 text-base md:text-xl min-w-max my-1">
+                        <Badge color={expense.category == "alimentacion" ? "warning" : expense.category == "pasajes" ? "red" : expense.category == "compras" ? "indigo" : "success"} className="mx-3 text-base md:text-xl min-w-max my-1">
                             {expense.category == "sin categoria" ? "sin categoría" : expense.category}
                         </Badge>
                     </div>
