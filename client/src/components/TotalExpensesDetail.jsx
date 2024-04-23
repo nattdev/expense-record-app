@@ -1,9 +1,11 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useExpenses } from "./ExpensesContext";
 import { Badge, Popover, Button } from "flowbite-react";
 
 function TotalExpensesDetail() {
     const storedCategoriesExpenses = JSON.parse(localStorage.getItem('categories'));
+
+    const [numberId, setNumberId] = useState(5);
 
     const { expenses } = useExpenses();
     const { categories, setCategories, calculateTotalByCategory } = useExpenses();
@@ -13,8 +15,8 @@ function TotalExpensesDetail() {
     useEffect(() => {
         if (storedCategoriesExpenses !== null) {
             setCategories(storedCategoriesExpenses);
-        } else {
-            setCategories(initialCategories);
+            const maxId = storedCategoriesExpenses.reduce((max, category) => category.id > max ? category.id : max, 0);
+            setNumberId(maxId + 1);
         }
     }, []);
 
@@ -36,20 +38,15 @@ function TotalExpensesDetail() {
         localStorage.setItem("categories", JSON.stringify(categories));
     }, [categories]);
 
-
-    const initialCategories = [
-        { name: "alimentacion", amount: 0 },
-        { name: "compras", amount: 0 },
-        { name: "pasajes", amount: 0 },
-        { name: "sin categoria", amount: 0 }
-    ];
-
     const categoriesDetail = (
         categories.map((category, i) => <li key={i} className="flex m-1 items-center">
-            <Badge color={category.name == "alimentacion" ? "warning" : category.name == "pasajes" ? "red" : category.name == "compras" ? "indigo" : category.name == "sin categoria" ? "gray" : "success"} className="text-base md:text-xl min-w-max">
-                <p className="capitalize rounded-md">{category.name} :</p>
-            </Badge>
-            <p className="ml-3 font-medium">{category.amount}</p>
+            <div>
+                <Badge color={category.name == "alimentacion" ? "warning" : category.name == "pasajes" ? "red" : category.name == "compras" ? "indigo" : category.name == "sin categoria" ? "gray" : "success"} className="text-base md:text-xl min-w-max">
+                    <p className="capitalize rounded-md">{category.name} :</p>
+                </Badge>
+                <p className="ml-3 font-medium">{category.amount}</p>
+            </div>
+            <button disabled={category.amount == 0 ? false : true} onClick={() => handleDeleteCategory(category.id)} className="ml-auto bg-slate-50 m-1 rounded-sm text-xl disabled:opacity-10">❌</button>
         </li>)
     );
 
@@ -71,11 +68,19 @@ function TotalExpensesDetail() {
         const categoryExists = categories.some(category => category.name === refCategoryValue);
 
         if (!categoryExists) {
+            setNumberId(numberId + 1);
             const newCategory = {
+                id: numberId,
                 name: refCategoryValue,
-                amount: 0
+                amount: 0.00
             }
             setCategories([...categories, newCategory]);
+        }
+    }
+
+    function handleDeleteCategory(id) {
+        if (categories.find(category => category.id === id).amount == 0) {
+            setCategories(categories.filter(categories => categories.id !== id));
         }
     }
 
