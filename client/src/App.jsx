@@ -12,7 +12,7 @@ import TotalExpensesDetail from "./components/TotalExpensesDetail"
 
 function App() {
   return (
-    <div className="flex w-full flex-col items-center p-3 bg-slate-50 text-lg md:text-xl lg:text-xl dark:text-slate-300 dark:bg-[#2E4B57] text-slate-800">
+    <div className="flex w-full flex-col items-center p-3 bg-slate-50 text-lg md:text-xl lg:text-xl dark:text-slate-300 dark:bg-[#0A1732] text-slate-800">
       <ExpensesContextProvider>
         <header className="p-3 text-center dark:text-white relative">
           <div className="flex flex-col sm:flex-row items-center">

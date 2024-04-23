@@ -16,6 +16,7 @@ export const ExpensesContextProvider = ({ children }) => {
     const [totalExpenses, setTotalExpenses] = useState(0);
     const [currentBudget, setCurrentBudget] = useState(0);
     const [categories, setCategories] = useState([]);
+    const [isDarkMode, setIsDarkMode] = useState();
 
     const calculateTotalByCategory = (expenses, category) => {
         const filteredExpenses = expenses.filter(expense => expense.category.includes(category));
@@ -24,7 +25,7 @@ export const ExpensesContextProvider = ({ children }) => {
     };
 
     return (
-        <ExpensesContext.Provider value={{ expenses, setExpenses, totalExpenses, setTotalExpenses, currentBudget, setCurrentBudget, categories, setCategories, calculateTotalByCategory }}>
+        <ExpensesContext.Provider value={{ expenses, setExpenses, totalExpenses, setTotalExpenses, currentBudget, setCurrentBudget, categories, setCategories, calculateTotalByCategory, isDarkMode, setIsDarkMode }}>
             {children}
         </ExpensesContext.Provider>
     )

@@ -7,6 +7,7 @@ function BudgetStatistics() {
     const { expenses } = useExpenses();
     const { totalExpenses, setTotalExpenses } = useExpenses();
     const { currentBudget, setCurrentBudget } = useExpenses();
+    const { isDarkMode } = useExpenses();
 
     const [currentProgress, setCurrentProgress] = useState(0);
     const [remainingProgress, setRemainingProgress] = useState(0);
@@ -63,7 +64,7 @@ function BudgetStatistics() {
     }
 
     return (
-        <div className="dark:bg-[#A7CC15] sm:p-6 p-4 rounded-3xl col-span-2 sm:col-span-1 order-2 sm:order-none bg-white shadow-md dark:text-slate-700">
+        <div className="dark:bg-[#04394E] sm:p-6 p-4 rounded-3xl col-span-2 sm:col-span-1 order-2 sm:order-none bg-white shadow-md dark:text-slate-300">
             <header>
                 <div className="flex items-center gap-1">
                     <p className="font-medium text-2xl grow w-full">Presupuesto del día</p>
@@ -74,9 +75,9 @@ function BudgetStatistics() {
             </header>
             <section>
                 <div>
-                    <Progress progress={currentProgress} color="red" size="xl" className="bg-slate-100 dark:bg-white" />
+                    <Progress progress={currentProgress} color={ isDarkMode ? "red" : "yellow"} size="xl" className="bg-slate-100 dark:bg-white" />
                     <div className="flex text-center items-center w-full justify-around pt-2 text-xl">
-                        <div className="text-rose-700 font-medium text-center">
+                        <div className="text-rose-700 dark:text-yellow-300 font-medium text-center">
                             <p>{currentProgress} %</p>
                             <p>Gastado</p>
                         </div>

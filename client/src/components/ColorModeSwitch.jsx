@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import darkModeIcon from "../assets/icons/darkModeIcon.svg";
 import lightModeIcon from "../assets/icons/lightModeIcon.svg";
+import { useExpenses } from "./ExpensesContext";
 
 function ColorModeSwitch() {
     const storedItemTheme = localStorage.getItem('theme');
 
-    const [isDarkMode, setIsDarkMode] = useState();
-
+    const { isDarkMode, setIsDarkMode } = useExpenses();
+    
     useEffect(() => {
         if (storedItemTheme !== null) {
             localStorage.setItem('theme', storedItemTheme);

@@ -10,7 +10,7 @@ function RemainingBudget() {
     }, [totalExpenses, currentBudget]);
 
     return (
-        <div id="remaining-budget-wrapper" className="dark:bg-lime-500 dark:text-slate-50 text-lime-500 bg-white shadow-md py-4 px-4 sm:p-6 rounded-3xl grow">
+        <div id="remaining-budget-wrapper" className="dark:bg-slate-600 dark:text-slate-50 text-lime-500 bg-white shadow-md py-4 px-4 sm:p-6 rounded-3xl grow">
         <p className="font-bold text-2xl sm:text-3xl">{remainingBudget < 0 ? 0 : remainingBudget}</p><p>SALDO RESTANTE</p>
         </div>
     )
