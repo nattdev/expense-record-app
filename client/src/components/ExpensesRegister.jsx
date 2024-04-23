@@ -13,12 +13,11 @@ function ExpensesRegister() {
     const [selectedId, setSelectedId] = useState("");
 
     const { expenses, setExpenses } = useExpenses();
-    const { categories, setCategories } = useExpenses();
+    const { categories } = useExpenses();
 
     const refAmount = useRef();
     const refCurrency = useRef();
     const refCount = useRef();
-    const refCategory = useRef();
 
     useEffect(() => {
         if (storedItemsExpenses !== null) {
@@ -47,39 +46,12 @@ function ExpensesRegister() {
         )
     );
 
-    const expenseCategorySubmit = (
-        <div className="p-3 text-black">
-            <header className="flex justify-between mb-3 font-medium">
-                <p>Nueva Categoría:</p>
-            </header>
-            <form action="" onSubmit={handleCategoryCreate} className="flex flex-col justify-center items-left">
-                <input id="expenseCategory" name="expenseCategory" step="1" type="text" defaultValue="" ref={refCategory} className=" text-slate-600 border [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none rounded-md" placeholder="Categoría" />
-                <Button type="submit" className="mt-3">Agregar</Button>
-            </form>
-        </div>
-    );
-
-    function handleCategoryCreate(event) {
-        event.preventDefault();
-        const refCategoryValue = refCategory.current.value;
-        const categoryExists = categories.some(category => category.name === refCategoryValue);
-
-        if (!categoryExists) {
-            const newCategory = {
-                name: refCategoryValue,
-                amount: 0
-            }
-            setCategories([...categories, newCategory]);
-        }
-    }
-
     const expenseDetail = (
         <div id="expense-detail-wrapper" className="bg-white rounded-2xl p-3 text-black">
             <header className="flex justify-between mb-3 font-medium items-center">
                 <p>Categorías:</p>
             </header>
             <div className="flex flex-col">
-                {expenseCategorySubmit}
                 <ul className="flex flex-col">
                     {radioButtonsList}
                 </ul>
