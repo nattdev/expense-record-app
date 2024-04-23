@@ -40,7 +40,7 @@ function ExpensesRegister() {
             <li key={category.name}>
                 <input id={category.name} type="radio" name="category" value={category.name} onChange={handleCategoryChange} checked={selectedCategory === category.name} className="hidden peer">
                 </input>
-                <label htmlFor={category.name} className={(category.name == "alimentacion" ? "peer-checked:bg-amber-200" : category.name == "pasajes" ? "peer-checked:bg-green-200" : category.name == "compras" ? "peer-checked:bg-indigo-300" : "peer-checked:bg-slate-200") + " rounded-md border inline-block px-2 py-1 m-1 capitalize"}>{category.name}
+                <label htmlFor={category.name} className={(category.name == "alimentacion" ? "peer-checked:bg-amber-200" : category.name == "pasajes" ? "peer-checked:bg-red-200" : category.name == "compras" ? "peer-checked:bg-indigo-300" : category.name == "sin categoria" ? "peer-checked:bg-slate-200" : "peer-checked:bg-green-200") + " rounded-md border inline-block px-2 py-1 m-1 capitalize"}>{category.name}
                 </label>
             </li>
         )
@@ -87,7 +87,7 @@ function ExpensesRegister() {
                 </div>
                 <Popover content={expenseDetail} placement="bottom" trigger="click" className="bg-white border border-slate-200 rounded-xl dark:border-white">
                     <div>
-                        <Badge color={expense.category == "alimentacion" ? "warning" : expense.category == "pasajes" ? "red" : expense.category == "compras" ? "indigo" : "success"} className="mx-3 text-base md:text-xl min-w-max my-1">
+                        <Badge color={expense.category == "alimentacion" ? "warning" : expense.category == "pasajes" ? "red" : expense.category == "compras" ? "indigo" : expense.category == "sin categoria" ? "gray" : "success"} className="mx-3 text-base md:text-xl min-w-max my-1">
                             {expense.category == "sin categoria" ? "sin categoría" : expense.category}
                         </Badge>
                     </div>

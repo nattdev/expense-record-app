@@ -41,7 +41,7 @@ function TotalExpensesDetail() {
 
     const categoriesDetail = (
         categories.map((category, i) => <li key={i} className="flex m-1 items-center">
-            <Badge color={category.name == "alimentacion" ? "warning" : category.name == "pasajes" ? "red" : category.name == "compras" ? "indigo" : "success"} className="text-base md:text-xl min-w-max">
+            <Badge color={category.name == "alimentacion" ? "warning" : category.name == "pasajes" ? "red" : category.name == "compras" ? "indigo" : category.name == "sin categoria" ? "gray" : "success"} className="text-base md:text-xl min-w-max">
                 <p className="capitalize rounded-md">{category.name} :</p>
             </Badge>
             <p className="ml-3 font-medium">{category.amount}</p>
