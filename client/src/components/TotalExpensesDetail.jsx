@@ -46,7 +46,7 @@ function TotalExpensesDetail() {
                 </Badge>
                 <p className="ml-3 font-medium">{category.amount}</p>
             </div>
-            <button disabled={category.amount == 0 ? false : true} onClick={() => handleDeleteCategory(category.id)} className="ml-auto bg-slate-50 m-1 rounded-sm text-xl disabled:opacity-10">❌</button>
+            {category.name !== "sin categoria" ?  <button disabled={category.amount == 0 ? false : true} onClick={() => handleDeleteCategory(category.id)} className="ml-auto bg-slate-50 m-1 rounded-sm text-xl disabled:opacity-10">❌</button> : false}
         </li>)
     );
 
@@ -56,7 +56,7 @@ function TotalExpensesDetail() {
                 <p>Nueva Categoría:</p>
             </header>
             <form action="" onSubmit={handleCategoryCreate} className="flex flex-col justify-center items-left">
-                <input id="expenseCategory" name="expenseCategory" step="1" type="text" defaultValue="" ref={refCategory} className=" text-slate-600 border [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none rounded-md" placeholder="Categoría" />
+                <input required id="expenseCategory" name="expenseCategory" step="1" type="text" defaultValue="" ref={refCategory} className=" text-slate-600 border [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none rounded-md" placeholder="Categoría" />
                 <Button type="submit" className="mt-3">Agregar</Button>
             </form>
         </div>
