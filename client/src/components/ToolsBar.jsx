@@ -1,7 +1,8 @@
+import { useEffect } from "react";
 import { useExpenses } from "./ExpensesContext";
 
 function ToolsBar() {
-    const { setExpenses, setCurrentBudget } = useExpenses();
+    const { setExpenses, setCurrentBudget, setCategories } = useExpenses();
 
     const initialExpenses = [
         { id: 1, currency: "soles", category: "alimentacion", "amount": 200, "count": 1 },
@@ -14,9 +15,22 @@ function ToolsBar() {
         { id: 8, currency: "soles", category: "sin categoria", "amount": 20.02, "count": 1 }
     ]
 
+    const initialCategories = [
+        { id: 1, name: "alimentacion", amount: 0.00 },
+        { id: 2, name: "compras", amount: 0.00 },
+        { id: 3, name: "pasajes", amount: 0.00 },
+        { id: 4, name: "sin categoria", amount: 0.00 }
+    ];
+
+
+    useEffect(() => {
+        setCategories(initialCategories);
+    }, []);
+
     function demoHandle() {
         setExpenses(initialExpenses);
         setCurrentBudget(2000);
+        setCategories(initialCategories);
     }
 
     function cleanHandle() {
