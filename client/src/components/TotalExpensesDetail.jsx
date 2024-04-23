@@ -3,6 +3,7 @@ import { useExpenses } from "./ExpensesContext";
 import { Badge, Popover, Button } from "flowbite-react";
 
 function TotalExpensesDetail() {
+    const storedCategoriesExpenses = JSON.parse(localStorage.getItem('categories'));
 
     const { expenses } = useExpenses();
     const { categories, setCategories, calculateTotalByCategory } = useExpenses();
@@ -10,7 +11,11 @@ function TotalExpensesDetail() {
     const refCategory = useRef();
 
     useEffect(() => {
-        setCategories(initialCategories);
+        if (storedCategoriesExpenses !== null) {
+            setCategories(storedCategoriesExpenses);
+        } else {
+            setCategories(initialCategories);
+        }
     }, []);
 
     useEffect(() => {
