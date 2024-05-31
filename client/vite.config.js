@@ -12,7 +12,7 @@ const pwaOptions = {
   },
   manifest: {
     name: 'Expense Record App',
-    short_name: 'ExpenseRecord',
+    short_name: 'Expense Record',
     description: 'A web application to register expenses',
     theme_color: '#ffffff',
     start_url: "/index.html",
