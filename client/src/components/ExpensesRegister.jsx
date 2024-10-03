@@ -40,15 +40,15 @@ function ExpensesRegister() {
             <li key={category.name}>
                 <input id={category.name} type="radio" name="category" value={category.name} onChange={handleCategoryChange} checked={selectedCategory === category.name} className="hidden peer">
                 </input>
-                <label htmlFor={category.name} className={(category.name == "alimentacion" ? "peer-checked:bg-amber-200" : category.name == "pasajes" ? "peer-checked:bg-red-200" : category.name == "compras" ? "peer-checked:bg-indigo-300" : category.name == "sin categoria" ? "peer-checked:bg-slate-200" : "peer-checked:bg-green-200") + " rounded-md border inline-block px-2 py-1 m-1 capitalize"}>{category.name}
+                <label htmlFor={category.name} className={(category.name == "alimentacion" ? "peer-checked:bg-amber-200" : category.name == "pasajes" ? "peer-checked:bg-red-200" : category.name == "compras" ? "peer-checked:bg-indigo-300" : category.name == "sin categoria" ? "peer-checked:bg-slate-200" : "peer-checked:bg-green-200") + " rounded-md border inline-block px-2 py-1 m-1 capitalize dark:bg-white"}>{category.name}
                 </label>
             </li>
         )
     );
 
     const expenseDetail = (
-        <div id="expense-detail-wrapper" className="bg-white rounded-2xl p-3 text-black">
-            <header className="flex justify-between mb-3 font-medium items-center">
+        <div id="expense-detail-wrapper" className="bg-white rounded-2xl p-3 text-black dark:bg-slate-600">
+            <header className="flex justify-between mb-3 font-medium items-center dark:text-white">
                 <p>Categorías:</p>
             </header>
             <div className="flex flex-col">
@@ -61,12 +61,12 @@ function ExpensesRegister() {
     );
 
     const expenseCountSubmit = (
-        <div className="p-3 text-black">
+        <div className="p-3 text-black dark:text-white">
             <header className="flex justify-between mb-3 font-medium">
                 <p>Cantidad:</p>
             </header>
             <form action="" onSubmit={handleCountChange} className="flex flex-col justify-center items-left">
-                <input ref={refCount} id="expenseCount" name="expenseCount" step="1" type="number" min="1" defaultValue="1" className="w-16 text-slate-600 border [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none rounded-md" placeholder="Cantidad" />
+                <input ref={refCount} id="expenseCount" name="expenseCount" step="1" type="number" min="1" defaultValue="1" className="w-16 text-slate-600 border [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none rounded-md dark:text-white dark:bg-gray-700" placeholder="Cantidad" />
                 <Button type="submit" className="mt-3">Actualizar</Button>
             </form>
         </div>
@@ -79,13 +79,13 @@ function ExpensesRegister() {
                     <div className="min-w-fit">
                         <span>{expense.currency == "soles" ? "S/." : "$"}</span>{expense.amount}
                     </div>
-                    <Popover content={expenseCountSubmit} placement="bottom" trigger="click" className="bg-white border border-slate-200 rounded-xl dark:border-white">
+                    <Popover content={expenseCountSubmit} placement="bottom" trigger="click" className="bg-white border border-slate-200 rounded-xl dark:bg-slate-600 dark:border-slate-600">
                         <div>
                             <Badge className="ml-1"> x {expense.count}</Badge>
                         </div>
                     </Popover>
                 </div>
-                <Popover content={expenseDetail} placement="bottom" trigger="click" className="bg-white border border-slate-200 rounded-xl dark:border-white">
+                <Popover content={expenseDetail} placement="bottom" trigger="click" className="bg-white border border-slate-200 rounded-xl dark:border-slate-600 dark:bg-slate-600">
                     <div>
                         <Badge color={expense.category == "alimentacion" ? "warning" : expense.category == "pasajes" ? "red" : expense.category == "compras" ? "indigo" : expense.category == "sin categoria" ? "gray" : "success"} className="mx-3 text-base md:text-xl min-w-max my-1">
                             {expense.category == "sin categoria" ? "sin categoría" : expense.category}

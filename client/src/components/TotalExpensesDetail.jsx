@@ -51,12 +51,12 @@ function TotalExpensesDetail() {
     );
 
     const expenseCategorySubmit = (
-        <div className="p-3 text-black">
+        <div className="p-3 text-black dark:text-white">
             <header className="flex justify-between mb-3 font-medium">
                 <p>Nueva Categoría:</p>
             </header>
             <form action="" onSubmit={handleCategoryCreate} className="flex flex-col justify-center items-left">
-                <input required id="expenseCategory" name="expenseCategory" step="1" type="text" defaultValue="" ref={refCategory} className=" text-slate-600 border [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none rounded-md" placeholder="Categoría" />
+                <input required id="expenseCategory" name="expenseCategory" step="1" type="text" defaultValue="" ref={refCategory} className=" text-slate-600 border [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none rounded-md dark:text-white dark:bg-gray-700 dark:placeholder-white" placeholder="Categoría" />
                 <Button type="submit" className="mt-3">Agregar</Button>
             </form>
         </div>
@@ -92,7 +92,7 @@ function TotalExpensesDetail() {
             <div className="flex">
                 <div>
                     <p>Nueva Categoría</p>
-                    <Popover content={expenseCategorySubmit} placement="right" trigger="click" className="bg-white border border-slate-200 rounded-xl dark:border-white">
+                    <Popover content={expenseCategorySubmit} placement="right" trigger="click" className="bg-white border border-slate-200 rounded-xl dark:bg-slate-600 dark:border-slate-600">
                         <button>
                             <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 7.757v8.486M7.757 12h8.486M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
