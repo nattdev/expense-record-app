@@ -87,7 +87,7 @@ function ExpensesRegister() {
                 </div>
                 <Popover content={expenseDetail} placement="bottom" trigger="click" className="bg-white border border-slate-200 rounded-xl dark:border-slate-600 dark:bg-slate-600">
                     <div>
-                        <Badge color={expense.category == "alimentacion" ? "warning" : expense.category == "pasajes" ? "red" : expense.category == "compras" ? "indigo" : expense.category == "sin categoria" ? "gray" : "success"} className="mx-3 text-base md:text-xl min-w-max my-1">
+                        <Badge color={expense.category == "alimentacion" ? "warning" : expense.category == "pasajes" ? "red" : expense.category == "compras" ? "indigo" : expense.category == "sin categoria" ? "gray" : "success"} className="mx-3 text-base md:text-lg min-w-max my-1">
                             {expense.category == "sin categoria" ? "sin categoría" : expense.category}
                         </Badge>
                     </div>
