@@ -46,7 +46,7 @@ function TotalExpensesDetail() {
                 </Badge>
                 <p className="ml-3 font-medium">{category.amount}</p>
             </div>
-            {category.name !== "sin categoria" ?  <button disabled={category.amount == 0 ? false : true} onClick={() => handleDeleteCategory(category.id)} className="ml-auto bg-slate-50 m-1 rounded-sm text-xl disabled:opacity-10">❌</button> : false}
+            {category.name !== "sin categoria" ?  <button disabled={category.amount == 0 ? false : true} onClick={() => handleDeleteCategory(category.id)} className="ml-auto bg-slate-50 m-1 rounded-sm text-xl disabled:opacity-10 dark:bg-slate-700 dark:text-white">❌</button> : false}
         </li>)
     );
 

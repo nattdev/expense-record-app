@@ -93,7 +93,7 @@ function ExpensesRegister() {
                     </div>
                 </Popover>
             </div>
-            <button onClick={() => handleDeleteExpense(expense.id)} className="ml-auto bg-slate-50 m-1 rounded-sm text-xl">❌</button>
+            <button onClick={() => handleDeleteExpense(expense.id)} className="ml-auto bg-slate-50 m-1 rounded-sm text-xl dark:bg-slate-700 dark:text-white">❌</button>
         </li>
     );
 
@@ -159,13 +159,13 @@ function ExpensesRegister() {
                 <p>Registro de Gastos:</p>
             </header>
             <form action="" onSubmit={handleSubmitExpense} className="flex gap-1">
-                <input ref={refAmount} id="expense" name="expense" step="0.01" type="number" required className="w-9/12 text-slate-600 border [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none rounded-md" placeholder="Ingresa el Gasto" />
+                <input ref={refAmount} id="expense" name="expense" step="0.01" type="number" required className="w-9/12 text-slate-600 border [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none rounded-md dark:bg-slate-600 dark:text-white dark:placeholder-white" placeholder="Ingresa el Gasto" />
 
-                <select ref={refCurrency} name="currency" defaultValue="soles" className="text-slate-600 border-none text-sm !p-2 !bg-none rounded-md">
+                <select ref={refCurrency} name="currency" defaultValue="soles" className="text-slate-600 border-none text-sm !p-2 !bg-none rounded-md dark:bg-slate-600 dark:text-white dark:placeholder-white">
                     <option value="soles">S/.</option>
                     {/* <option value="dolares">$</option> */}
                 </select>
-                <input type="submit" className="dark:bg-slate-50 bg-slate-200 p-2 m-0 outline-none border-none rounded-md ml-auto" value={"✔️"}></input>
+                <input type="submit" className="bg-slate-200 p-2 m-0 outline-none border-none rounded-md ml-auto dark:bg-slate-600 dark:text-white dark:placeholder-white" value={"✔️"}></input>
             </form>
             <ul id="expense-list" className="mt-3 relative w-full">
                 {expensesList}

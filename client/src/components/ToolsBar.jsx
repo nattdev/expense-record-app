@@ -45,10 +45,12 @@ function ToolsBar() {
             </header>
             <div className="flex flex-row sm:flex-row items-center gap-y-3">
                 <div className="flex items-center">
-                    <button className="bg-slate-100 text-black p-1 rounded-md mx-1 border border-slate-300" onClick={demoHandle}>Demo 📝</button>
+                    <button className="bg-slate-100 text-black p-1 rounded-md mx-1 border border-slate-300 dark:bg-slate-600 dark:border-slate-500
+                    dark:text-white" onClick={demoHandle}>Demo 📝</button>
                 </div>
                 <div className="flex items-center">
-                    <button className="bg-slate-100 text-black p-1 rounded-md mx-1 border border-slate-300" onClick={cleanHandle}>Limpiar ✨</button>
+                    <button className="bg-slate-100  text-black p-1 rounded-md mx-1 border border-slate-300 dark:bg-slate-600 dark:border-slate-500
+                    dark:text-white" onClick={cleanHandle}>Limpiar ✨</button>
                 </div>
             </div>
         </div>

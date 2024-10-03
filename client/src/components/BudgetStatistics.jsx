@@ -69,7 +69,7 @@ function BudgetStatistics() {
                 <div className="flex items-center gap-1">
                     <p className="font-medium text-2xl grow w-full">Presupuesto del día</p>
                     <p className="w-fit">S/.</p>
-                    <input ref={budgetInput} onChange={handleCurrentBadget} type="number" min={totalExpenses} step={0.01} className="[-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none rounded-md border text-center h-fit w-full text-xl sm:text-2xl dark:text-slate-700" defaultValue={storedItemsBudget} placeholder="Ingresa el monto"></input>
+                    <input ref={budgetInput} onChange={handleCurrentBadget} type="number" min={totalExpenses} step={0.01} className="[-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none rounded-md border text-center h-fit w-full text-xl sm:text-2xl dark:bg-slate-600 dark:text-white" defaultValue={storedItemsBudget} placeholder="Ingresa el monto"></input>
                 </div>
                 <p className="dark:text-slate-50 py-3 text-sm">{isBudgetValid || remainingProgress !== 0 ? "" : "* El presupuesto no puede ser menor que el gasto total."}</p>
             </header>
