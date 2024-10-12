@@ -36,7 +36,7 @@ Sigue estos pasos para instalar y ejecutar el proyecto en tu máquina local.
 2. Navega a la carpeta del proyecto:
 
    ```bash
-   cd client
+   cd expense-record-app/client
    ```
 
 3. Instala las dependencias:
